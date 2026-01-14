@@ -4,7 +4,6 @@ import { supabase } from "../lib/supabase";
 import type { NowResponse } from "../lib/types";
 
 export function FocusCoachView() {
-    const [session, setSession] = useState<any>(null); // Keep session for now or simplify if auth not needed
     const [now, setNow] = useState<NowResponse | null>(null);
     const [loading, setLoading] = useState(false);
     const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
@@ -51,13 +50,7 @@ export function FocusCoachView() {
         alert("Saved to Parking Lot");
     }
 
-    async function quickAuth() {
-        const email = prompt("Email");
-        const password = prompt("Password");
-        if (!email || !password) return;
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) alert(error.message);
-    }
+
 
     const mmss = useMemo(() => {
         if (secondsLeft === null) return "";
