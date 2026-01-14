@@ -1,4 +1,7 @@
+import { useState, useEffect, useMemo } from "react";
 import { aiCoach } from "../logic/aiCoach";
+import { supabase } from "../lib/supabase";
+import type { NowResponse } from "../lib/types";
 
 export function FocusCoachView() {
     const [session, setSession] = useState<any>(null); // Keep session for now or simplify if auth not needed
@@ -63,22 +66,10 @@ export function FocusCoachView() {
         return `${m}:${String(s).padStart(2, '0')}`;
     }, [secondsLeft]);
 
-    if (!session) {
-        return (
-            <main className="max-w-[520px] mx-auto mt-10 p-4 font-sans text-center">
-                <h1 className="text-2xl mb-4 text-gray-800">Antigravity Coach</h1>
-                <div className="p-6 border border-gray-200 rounded-xl bg-white shadow-sm">
-                    <p className="mb-4 text-gray-600">Please sign in to start your session.</p>
-                    <button
-                        onClick={quickAuth}
-                        className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                    >
-                        Login
-                    </button>
-                </div>
-            </main>
-        );
-    }
+    // Bypass Auth for Local Agent Mode
+    useEffect(() => {
+        refreshNow();
+    }, []);
 
     return (
         <main className="max-w-[520px] mx-auto mt-10 p-4 font-sans pb-24">
