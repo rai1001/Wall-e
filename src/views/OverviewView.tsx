@@ -4,6 +4,7 @@ import { TimelineItem } from '../components/ui/TimelineItem';
 import { TASK_DATA, EVENT_DATA } from '../data/mockData';
 import { getNowSuggestion } from '../logic/suggestionEngine';
 import type { Suggestion } from '../types/schema_house';
+import { ConnectionTester } from '../components/debug/ConnectionTester';
 
 export const OverviewView = () => {
     const [suggestion, setSuggestion] = useState<Suggestion | null>(null);
@@ -65,6 +66,11 @@ export const OverviewView = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            {/* Temporary Integration Test */}
+            <div className="mb-24">
+                <ConnectionTester />
             </div>
 
         </div>
