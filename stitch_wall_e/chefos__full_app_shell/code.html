@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS Mobile</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec3713", // Terracotta
+                        "primary-light": "#fdf1ef", 
+                        "background-light": "#FDFBF7", // Soft cream as requested
+                        "background-white": "#ffffff",
+                        "background-dark": "#221310",
+                        "text-main": "#1b100d",
+                        "text-muted": "#9a594c",
+                        "divider": "#e7d3cf",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main antialiased font-sans overflow-hidden h-screen flex flex-col relative">
+<!-- Mobile Navigation Drawer (Hidden by default, simulated as if main screen is active) -->
+<!-- We will use the main screen layout but keep the Sidebar accessible via the menu icon theoretically -->
+<!-- Top App Bar -->
+<header class="flex-none bg-background-light dark:bg-background-dark px-4 py-3 flex items-center justify-between border-b border-divider/30 z-20">
+<div class="flex items-center gap-3">
+<button class="text-text-main hover:bg-black/5 rounded-full p-2 -ml-2 transition-colors">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+<h1 class="text-text-main text-2xl font-bold font-display tracking-tight">Calendar</h1>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-full font-display font-semibold text-sm shadow-md shadow-primary/20 transition-transform active:scale-95 flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+            Ahora Toca
+        </button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar relative bg-background-white dark:bg-[#1a0f0d] rounded-t-2xl shadow-[0_-4px_20px_rgba(0,0,0,0.03)] -mt-1 pt-1">
+<!-- Sticky Sub-header Controls -->
+<div class="sticky top-0 z-10 bg-background-white/95 dark:bg-[#1a0f0d]/95 backdrop-blur-sm border-b border-divider/30 pb-2">
+<!-- Week Headline & Date -->
+<div class="px-5 pt-4 pb-2 flex justify-between items-baseline">
+<h2 class="text-text-main font-display text-3xl font-bold">This Week</h2>
+<span class="text-text-muted font-sans text-sm font-medium">Oct 12 - 19</span>
+</div>
+<!-- Profile Status Widget (Adapted from component list) -->
+<div class="px-5 pb-4">
+<div class="flex items-center justify-between rounded-xl bg-primary-light/50 border border-primary/10 p-3">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center overflow-hidden border border-white shadow-sm">
+<img alt="Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-jRl66o-6wERQx4PHL-u7Nb1Mvuu6_6J8WIgxjIyT30h2gTQZI3J4LPUfoV8_nU-vONVG7eIJzriPgEj-sTs2HXObSF1zGyzpPaA3aYGpkPQmIVv248dX-lcol3hWHPz3BuSWom6A_PciIiltYt3jQUAOwc1N6AA4ErQW_I3RbEPmaXaATaczQLxXtQoCDpPvIQynHNlwdQJbxLjnHbQJxfMiS8wQHrtezLnc1J6LtU3dS1tdmv5zuwhIO0bZR7FSymQ4Nyd_5qFQ"/>
+</div>
+<div class="flex flex-col">
+<span class="text-text-main font-display font-bold leading-tight">Feeling productive! ⚡️</span>
+<span class="text-text-muted text-xs font-medium uppercase tracking-wide">Kal-el Status</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter Controls Row -->
+<div class="px-4 flex flex-col gap-3">
+<!-- View Switcher (SegmentedButtons) -->
+<div class="flex h-10 w-full items-center justify-center rounded-lg bg-[#f3e9e7] dark:bg-white/5 p-1">
+<label class="group flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 relative">
+<input class="peer invisible w-0 absolute" name="view" type="radio" value="Day"/>
+<span class="z-10 text-text-muted peer-checked:text-text-main text-sm font-medium font-sans truncate transition-colors">Day</span>
+<div class="absolute inset-0 bg-white dark:bg-background-dark shadow-sm rounded-md scale-95 opacity-0 peer-checked:opacity-100 peer-checked:scale-100 transition-all"></div>
+</label>
+<label class="group flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 relative">
+<input checked="" class="peer invisible w-0 absolute" name="view" type="radio" value="Week"/>
+<span class="z-10 text-text-muted peer-checked:text-text-main text-sm font-medium font-sans truncate transition-colors">Week</span>
+<div class="absolute inset-0 bg-white dark:bg-background-dark shadow-sm rounded-md scale-95 opacity-0 peer-checked:opacity-100 peer-checked:scale-100 transition-all"></div>
+</label>
+<label class="group flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md px-2 relative">
+<input class="peer invisible w-0 absolute" name="view" type="radio" value="Month"/>
+<span class="z-10 text-text-muted peer-checked:text-text-main text-sm font-medium font-sans truncate transition-colors">Month</span>
+<div class="absolute inset-0 bg-white dark:bg-background-dark shadow-sm rounded-md scale-95 opacity-0 peer-checked:opacity-100 peer-checked:scale-100 transition-all"></div>
+</label>
+</div>
+<!-- Mode Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary text-white pl-3 pr-4 shadow-sm shadow-primary/25">
+<span class="material-symbols-outlined text-[18px]">briefcase_meal</span>
+<p class="text-sm font-medium leading-normal">Work Mode</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f3e9e7] dark:bg-white/5 pl-3 pr-4 border border-transparent hover:border-divider transition-colors">
+<span class="material-symbols-outlined text-text-main text-[18px]">cottage</span>
+<p class="text-text-main text-sm font-medium leading-normal">Home Mode</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#f3e9e7] dark:bg-white/5 pl-3 pr-4 border border-transparent hover:border-divider transition-colors">
+<span class="material-symbols-outlined text-text-main text-[18px]">restaurant</span>
+<p class="text-text-main text-sm font-medium leading-normal">Meal Prep</p>
+</button>
+</div>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="relative w-full min-h-[800px] flex bg-background-white dark:bg-[#1a0f0d] pt-4">
+<!-- Time Column -->
+<div class="w-14 flex-none flex flex-col items-end pr-2 text-xs font-medium text-text-muted/60 pt-9 gap-[52px]">
+<div>8 AM</div>
+<div>9 AM</div>
+<div>10 AM</div>
+<div>11 AM</div>
+<div>12 PM</div>
+<div>1 PM</div>
+<div>2 PM</div>
+<div>3 PM</div>
+<div>4 PM</div>
+</div>
+<!-- Days Columns Container (Scrollable horizontally if needed) -->
+<div class="flex-1 flex overflow-x-auto no-scrollbar pr-4 pb-20">
+<!-- Day 1: Mon -->
+<div class="flex-1 min-w-[100px] border-l border-dashed border-divider/50 relative">
+<div class="text-center pb-4 sticky top-0">
+<div class="font-display font-semibold text-text-muted">Mon</div>
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mx-auto mt-1 font-bold shadow-md shadow-primary/20">12</div>
+</div>
+<!-- Grid Lines -->
+<div class="absolute w-full top-[50px] space-y-[68px] opacity-30 pointer-events-none">
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+</div>
+<!-- Events -->
+<div class="absolute top-[50px] left-1 right-1 h-[130px] rounded-lg bg-primary/10 border-l-4 border-primary p-2 cursor-pointer hover:bg-primary/15 transition-colors group">
+<div class="text-primary font-bold text-xs mb-0.5">08:00 - 10:00</div>
+<div class="text-text-main font-bold font-display leading-tight text-sm">Deep Work Block</div>
+<div class="text-text-muted text-[10px] mt-1 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">bolt</span> Strategy
+                        </div>
+</div>
+<div class="absolute top-[260px] left-1 right-1 h-[60px] rounded-lg bg-[#EFEBE9] border-l-4 border-[#8D6E63] p-2 cursor-pointer hover:bg-[#D7CCC8]/50 transition-colors">
+<div class="text-[#5D4037] font-bold text-xs mb-0.5">11:00 - 12:00</div>
+<div class="text-text-main font-bold font-display leading-tight text-sm">Team Sync</div>
+</div>
+</div>
+<!-- Day 2: Tue -->
+<div class="flex-1 min-w-[100px] border-l border-dashed border-divider/50 relative bg-background-light/30">
+<div class="text-center pb-4 sticky top-0">
+<div class="font-display font-semibold text-text-muted">Tue</div>
+<div class="w-8 h-8 rounded-full text-text-main flex items-center justify-center mx-auto mt-1 font-bold">13</div>
+</div>
+<!-- Grid Lines -->
+<div class="absolute w-full top-[50px] space-y-[68px] opacity-30 pointer-events-none">
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+</div>
+<!-- Events -->
+<div class="absolute top-[120px] left-1 right-1 h-[90px] rounded-lg bg-[#FFF3E0] border-l-4 border-[#FF9800] p-2 cursor-pointer hover:bg-[#FFE0B2]/50 transition-colors">
+<div class="text-[#E65100] font-bold text-xs mb-0.5">09:00 - 10:30</div>
+<div class="text-text-main font-bold font-display leading-tight text-sm">Menu Planning</div>
+<div class="flex -space-x-1 overflow-hidden mt-1.5">
+<img alt="user avatar" class="inline-block h-4 w-4 rounded-full ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDzuWC195M_pu3w_vcKUta4O2lRx4Mxu3zzJPWmQ5pUpfhdOi8kew1bs9cvRPCThS-txV5qT0l_NUdFvKmQIc_r8HdYczZZSCPMMzSbEbHb_xEoNkso_6W6RSTLY05PSNqAycbv4YaRNHgY4eTwif6wHwm1xG0DGFFjjQPi7YdRdmc4zYZk6AHtlpBOy_nJeLhqAsdPfcejjMtV8qsPbs3tYuL3hINQT4akz5xyOhVJk968wRwQa8acD9kSWxYG-fJthXc7KehC330"/>
+<img alt="user avatar" class="inline-block h-4 w-4 rounded-full ring-2 ring-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm8H0wxhfzOHGcV7XuVphyKYmNRF8zh1B4WQjS-XXXk_eE5LCFcOe6kvJVv1zPO_UF53ME4euRSFOiN12hoAW0YaUYuRHtcL5GXVVah3iDObDrDnzJ-JynODN9ovfWu_QR3qkb3zKlzmbyDexCoLGssXeEhZaxTj9cOJDSrdcVZXlX0onHWSOdmB7yYEVGCJ-ORJwNPqtSLHTN5oYAibS5vliuL_ZSifxk2C7FpM-yGyd2sbcjVovdJhXgN_Uig7USsvb1h15Dpxdx"/>
+</div>
+</div>
+</div>
+<!-- Day 3: Wed -->
+<div class="flex-1 min-w-[100px] border-l border-dashed border-divider/50 relative">
+<div class="text-center pb-4 sticky top-0">
+<div class="font-display font-semibold text-text-muted">Wed</div>
+<div class="w-8 h-8 rounded-full text-text-main flex items-center justify-center mx-auto mt-1 font-bold">14</div>
+</div>
+<!-- Grid Lines -->
+<div class="absolute w-full top-[50px] space-y-[68px] opacity-30 pointer-events-none">
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+<div class="border-t border-divider w-full"></div>
+</div>
+<!-- Events -->
+<div class="absolute top-[400px] left-1 right-1 h-[100px] rounded-lg bg-[#E0F2F1] border-l-4 border-[#009688] p-2 cursor-pointer hover:bg-[#B2DFDB]/50 transition-colors">
+<div class="text-[#004D40] font-bold text-xs mb-0.5">13:00 - 14:30</div>
+<div class="text-text-main font-bold font-display leading-tight text-sm">Grocery Run</div>
+<div class="text-[#00796B] text-[10px] mt-1 font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">shopping_cart</span> Whole Foods
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (Alternative placement for mobile) -->
+<button class="absolute bottom-6 right-6 h-14 w-14 rounded-full bg-primary text-white shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-30">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</body></html>

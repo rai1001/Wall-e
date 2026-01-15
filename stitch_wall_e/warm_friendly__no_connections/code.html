@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS - Connect Accounts</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#eebd2b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221d10",
+                        "text-main": "#1b180d",
+                        "text-muted": "#6b6659",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    animation: {
+                        "float": "float 6s ease-in-out infinite",
+                        "float-delayed": "float 6s ease-in-out 3s infinite",
+                    },
+                    keyframes: {
+                        float: {
+                            "0%, 100%": { transform: "translateY(0)" },
+                            "50%": { transform: "translateY(-10px)" },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col items-center justify-between relative overflow-hidden transition-colors duration-300">
+<!-- Decorative Background Circles -->
+<div class="absolute top-[-10%] right-[-20%] w-[300px] h-[300px] bg-primary/10 rounded-full blur-3xl pointer-events-none animate-float"></div>
+<div class="absolute bottom-[-5%] left-[-10%] w-[250px] h-[250px] bg-primary/15 rounded-full blur-2xl pointer-events-none animate-float-delayed"></div>
+<div class="absolute top-[40%] left-[10%] w-[100px] h-[100px] bg-primary/5 rounded-full blur-xl pointer-events-none"></div>
+<!-- Header Section -->
+<header class="w-full flex items-center justify-between p-6 z-10">
+<button class="w-12 h-12 flex items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[28px]">arrow_back</span>
+</button>
+<div class="w-12"></div> <!-- Spacer for centering if needed -->
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col items-center justify-center w-full max-w-md px-6 z-10 -mt-10">
+<!-- Illustration Area -->
+<div class="relative w-48 h-48 mb-8 flex items-center justify-center">
+<!-- Abstract rings representing syncing -->
+<div class="absolute inset-0 border-[12px] border-primary/20 rounded-full scale-90 animate-[spin_10s_linear_infinite]"></div>
+<div class="absolute inset-0 border-[12px] border-t-primary border-r-transparent border-b-transparent border-l-transparent rounded-full scale-90 rotate-45"></div>
+<div class="w-32 h-32 bg-white dark:bg-white/10 rounded-full shadow-lg flex items-center justify-center relative z-10 backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary text-[64px] icon-filled">sync_saved_locally</span>
+</div>
+<!-- Floating particles -->
+<div class="absolute top-0 right-0 w-4 h-4 bg-primary rounded-full animate-bounce"></div>
+<div class="absolute bottom-4 left-4 w-3 h-3 bg-primary/60 rounded-full animate-bounce delay-150"></div>
+</div>
+<!-- Text Content -->
+<div class="text-center space-y-3 mb-12">
+<h1 class="text-text-main dark:text-white text-[32px] font-extrabold leading-[1.1] tracking-tight">
+                Let's get your <br/> world in sync
+            </h1>
+<p class="text-text-muted dark:text-neutral-400 text-lg font-medium leading-relaxed max-w-[280px] mx-auto">
+                Connect your calendars to let ChefOS help you organize your day.
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-4">
+<!-- Google Connect Button -->
+<button class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-16 px-6 bg-primary hover:bg-[#eac452] active:scale-95 transition-all duration-200 shadow-md shadow-primary/20">
+<div class="absolute left-6 bg-white rounded-full p-1.5 flex items-center justify-center shadow-sm">
+<!-- Simple Google 'G' representation using SVG for accuracy -->
+<svg height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
+<path d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z" fill="#4285F4"></path>
+<path d="M -14.754 63.239 C -11.514 63.239 -8.804 62.159 -6.824 60.329 L -10.684 57.329 C -11.764 58.049 -13.134 58.489 -14.754 58.489 C -17.884 58.489 -20.534 56.379 -21.484 53.529 L -25.464 53.529 L -25.464 56.619 C -23.494 60.539 -19.444 63.239 -14.754 63.239 Z" fill="#34A853"></path>
+<path d="M -21.484 53.529 C -21.734 52.809 -21.864 52.039 -21.864 51.239 C -21.864 50.439 -21.724 49.669 -21.484 48.949 L -21.484 45.859 L -25.464 45.859 C -26.284 47.479 -26.754 49.299 -26.754 51.239 C -26.754 53.179 -26.284 54.999 -25.464 56.619 L -21.484 53.529 Z" fill="#FBBC05"></path>
+<path d="M -14.754 43.989 C -12.984 43.989 -11.404 44.599 -10.154 45.789 L -6.734 42.369 C -8.804 40.429 -11.514 39.239 -14.754 39.239 C -19.444 39.239 -23.494 41.939 -25.464 45.859 L -21.484 48.949 C -20.534 46.099 -17.884 43.989 -14.754 43.989 Z" fill="#EA4335"></path>
+</g>
+</svg>
+</div>
+<span class="text-text-main font-bold text-lg tracking-normal">Connect Google</span>
+<span class="material-symbols-outlined absolute right-6 text-text-main opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+</button>
+<!-- Outlook Connect Button -->
+<button class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-16 px-6 bg-white dark:bg-white/5 border-2 border-primary/30 hover:border-primary active:scale-95 transition-all duration-200">
+<div class="absolute left-6 bg-[#0078D4] rounded-md p-1 flex items-center justify-center w-[32px] h-[32px]">
+<span class="text-white font-bold text-xs font-sans">O</span>
+</div>
+<span class="text-text-main dark:text-white font-bold text-lg tracking-normal">Connect Outlook</span>
+</button>
+</div>
+</main>
+<!-- Footer Action -->
+<footer class="w-full py-8 text-center z-10">
+<button class="text-text-muted dark:text-neutral-500 font-semibold text-base hover:text-text-main dark:hover:text-white transition-colors py-2 px-4 rounded-full">
+            I'll do this later
+        </button>
+</footer>
+</body></html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS Iconography System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar to keep it clean */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-stone-900 dark:text-stone-100 font-display transition-colors duration-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Header -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md p-4 pb-2 justify-between border-b border-stone-200 dark:border-stone-800">
+<button class="flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors">
+<span class="material-symbols-outlined text-stone-900 dark:text-stone-100">arrow_back</span>
+</button>
+<h2 class="text-stone-900 dark:text-stone-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12">Iconography System</h2>
+</div>
+<!-- Headline -->
+<div class="flex flex-col items-center justify-center pt-8 pb-4 px-6">
+<h1 class="text-stone-900 dark:text-stone-50 tracking-tight text-[32px] font-medium italic leading-tight text-center">
+                Hand-drawn. Organic. Warm.
+            </h1>
+<p class="text-stone-500 dark:text-stone-400 text-sm mt-2 text-center max-w-xs font-sans">
+                A collection of thick-stroke assets for the ChefOS Assistant interface.
+            </p>
+</div>
+<!-- Section 1: Kal-el States -->
+<div class="w-full">
+<div class="flex items-center px-6 pt-6 pb-2">
+<h3 class="text-stone-900 dark:text-stone-100 text-xl font-bold italic leading-tight tracking-tight">Kal-el States</h3>
+<div class="ml-4 h-[1px] flex-1 bg-stone-200 dark:bg-stone-800"></div>
+</div>
+<div class="grid grid-cols-3 gap-4 p-6">
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-primary/10 dark:bg-primary/20 rounded-xl flex items-center justify-center p-4 border border-primary/20 hover:border-primary/50 transition-colors group cursor-pointer shadow-sm">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-80 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-normal invert-0 dark:invert" data-alt="Hand drawn thinking face icon with thick strokes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDeGHaYDXR-HE1bAAhVQHf-w2T4v4LbcJGYrpi6Vk0GQBEVv3wav43bKcEMi7D5Mp8oaD7DfBk6mlEEiGxq5PAoKGy1KrQU9Z2oyjhfJg5f-dxXOpS2y8fY_3YpC9sC3tE7hAdXWGw13uHdUmX9yJ1h0lQWLBpdnbnJDnIp1Edhj3mLwK012NpJVCVT-mfkYg-TzhrhtKV82wq8cWoI-xVWbzWJ2I2k-TkVsmsRgebtn_r5yQQIshqRBU4HqpZa4tu5p7OHuMffNW9F");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Thinking</p>
+</div>
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-primary/10 dark:bg-primary/20 rounded-xl flex items-center justify-center p-4 border border-primary/20 hover:border-primary/50 transition-colors group cursor-pointer shadow-sm">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-80 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-normal invert-0 dark:invert" data-alt="Hand drawn sleeping face icon with Zzz text" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC0cBCALrWN6LTaX6OAZkHi2mE5ymE7zSugGlwnI-W2hFEsc2SWkLIwEiEGSgeDA6iIt783dPyDjPevGSOfDsKWH9qEa7ZiMJ0ZxCCLX1-6LrolBsmojhmOYkHeIjY5lUvbco9ErWh72WfTugH56ZTVJqZBTYnGFBbYjxURz1RAlnjEn13MtteSmbsc6EAWLkhNxJx29vOZlAseNlEEDM50jwlLJvVlSfCyJl_cRWNmw1qn33RIvmXm_SGWfV4nL2k0CLNwt5gFhsgt");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Sleeping</p>
+</div>
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-primary/10 dark:bg-primary/20 rounded-xl flex items-center justify-center p-4 border border-primary/20 hover:border-primary/50 transition-colors group cursor-pointer shadow-sm">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-80 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-normal invert-0 dark:invert" data-alt="Hand drawn celebrating face with confetti" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuDjKYjwP7onO9f5GBag5rAxoJgFxytd35shqvzK1gRqOPcW7lwcvH920yD41EncBu2avDwlVauqjYEukcdwb3J6ZAP0afRCj-wiNh5J_4FeXsAuEKeB2hwhOnugQ0w3UFNgczYuURbXjoPOajYN0VY0opkTYnGS2DqqCjJhobtkUbKehrXqvcD16j2IbTOiG8dU3dF5p2ywifMNqwFHHoctpFDxu__HOAeggyfPouW0ZTVVv_yaveZ9Hhvnr2z10daV_7TKVNRmXz");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Celebrating</p>
+</div>
+</div>
+</div>
+<!-- Section 2: Life Contexts -->
+<div class="w-full">
+<div class="flex items-center px-6 pt-4 pb-2">
+<h3 class="text-stone-900 dark:text-stone-100 text-xl font-bold italic leading-tight tracking-tight">Life Contexts</h3>
+<div class="ml-4 h-[1px] flex-1 bg-stone-200 dark:bg-stone-800"></div>
+</div>
+<div class="grid grid-cols-3 gap-4 p-6">
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center p-4 border border-stone-200 dark:border-stone-700 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-60 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-lighten" data-alt="Simple briefcase icon line drawing" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBy994F_j67uOCBIqUSIq9BOC1OWwvYxpgk8q_vILL_PTYNMuaBtp-LEv1BsRD4dnH6kVSjklUcjAw6DKKG9l0uAB_VPC0Uu8RyRUhNkIfJNf4Iz1v8RcF9zvRilb4lcf2Ju22erQVJi8QfKhwUdzfPicjdOkkX23iPBOHpZAUMN8IK0xbXg37DSZBFXf36iGU6bbxi1CKEtJbm3wpR-k-DBc3yOuigadnsdF966lBoAVZwHF3leGvo8sZ_ghn-6iTKNMpau0RoLCgZ");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Work</p>
+</div>
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center p-4 border border-stone-200 dark:border-stone-700 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-60 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-lighten" data-alt="Potted plant icon organic style" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA2Dkwhsm2exvXGc2kLdZgf1NbHKTA8YaKmgODlPuTrNfpRQjS_Jy_4mX8yJMlmYUz9DF5BKcFbiu15L2IlsZ1CiBJF_6eI5miZN2e8RLaKc8yWB9DuSCfWJeZ6vQ6QnsDBnbgL-5dSdieaNMfPCuCcgdW9bqJnnYEGJrXTa7A5qcjYMlZG_tgCq2p00-zeEf_nr9f-N5tu4ZzS6NgGQdBsdu_3lshI6yk-f3NFznQw78h-UUNAlEq_wZG67_MEZylIzH736BWpv2Cs");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Home</p>
+</div>
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center p-4 border border-stone-200 dark:border-stone-700 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-60 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-lighten" data-alt="Fork and knife utensils icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADnD2e2dR97oV7ts4kibLgP8gK7P22UQdxrcmvARuK15gkaMWBHwBbqarpuYr7u5iRwl3cNb-YAUlnEkBJ0Y_pAYj5nH-3bkmoWvg3H8XEd5wkfD_25MBb71Vll45rh6ET33ikYMF9f8d1I847rrixCY7nBFurGONFPigZ9HpO_BjW55DiVxmJ-h0iSJr3F-jtJmDq2N8ValquAIBn0UNEr-x84dA4pDvur6h4PwbvfJ7x6qhLiHak5wctaYds9ET611CQbK1Ix9ui");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Dining</p>
+</div>
+</div>
+</div>
+<!-- Section 3: Action Icons -->
+<div class="w-full">
+<div class="flex items-center px-6 pt-4 pb-2">
+<h3 class="text-stone-900 dark:text-stone-100 text-xl font-bold italic leading-tight tracking-tight">Action Icons</h3>
+<div class="ml-4 h-[1px] flex-1 bg-stone-200 dark:bg-stone-800"></div>
+</div>
+<div class="grid grid-cols-3 gap-4 p-6">
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center p-4 border border-stone-200 dark:border-stone-700 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-60 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-lighten" data-alt="Maze puzzle icon representing stuck" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCiRH1CZwDBByvd7AbWdWYqxjtrLEV4fB_pJzjiR6HEwAfHQkRupgxyGrRFUgcYVZK67t1KHxgTX5-Pn4_iKlUj-inpA-suw5x8lFpQsxBXZG1gtTkkxolo0P2ji7grvdSshONwwwbOPzDVq5alSLzOmClfWRXEC8HHPS3LNiC2SdPsTob865ebxeqWootpY5uYJ8NBXK2tan0ujJe8g0YezH5i6ua-a5xUcXNXB2TTtlIWrdB7HFZUVu6I5oTSW38YayjXkEhrUIP_");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Stuck</p>
+</div>
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center p-4 border border-stone-200 dark:border-stone-700 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-60 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-lighten" data-alt="Letter P in a circle parking icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCk3wuQ9xyDwNU-RgBJIwwdhlbUesDqwQH4tVA1nfr0Mg9Ip12age_YUjUWF-DI7DmHS79BF3cCEVOntX61PgGPRC9Q_Jl8yvmPB3BUpBINI7towhosNQL6SfZdrSaxerDyOqMYZgUV5F6Xy4dAzu2BQy5XV3aVJGfVLRuBmy481sdpTwU3s0GP4jo19NSPlr39gQ1GpS2WxQqIuPbSxsChiq7b8faU5bO365Xyt8xT4-lwsn36bMgwdNGSWJUbe_-jDPIFEDEkQZjQ");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Parking</p>
+</div>
+<!-- Icon Item -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-full aspect-square bg-stone-100 dark:bg-stone-800 rounded-xl flex items-center justify-center p-4 border border-stone-200 dark:border-stone-700 hover:border-primary/50 transition-colors group cursor-pointer">
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-60 group-hover:opacity-100 transition-opacity mix-blend-multiply dark:mix-blend-lighten" data-alt="Play button icon execute action" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCp80DY00WMNn2TF30_i7bhGasqh64yLbrcFG8xveMIbxtn_a-gMzMY4Rwgjdh_3ASGwe9S3qOqTKYQ6mTQCwBsRXd1DSiXFHgyx3cCMkiS2_VKPxJYR68-R1iUWwXmAfc-CBVQ8GR21RDxYY9t4O0ISajYcJfCafypCCdUkqcCW58t67yCou405Y8I2GIUnM5DLorMuKOGobMutQhEI-oaa36Z0EQLo3U3ql3uvID3CdvA8FxLuizYTfUYrDIKU3WB92uJ21eWpf7f");'></div>
+</div>
+<p class="text-stone-800 dark:text-stone-200 text-sm font-medium leading-normal">Execute</p>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<div class="fixed bottom-6 right-6">
+<button class="bg-primary hover:bg-orange-600 text-white shadow-lg shadow-orange-900/20 rounded-full h-14 px-6 flex items-center gap-2 transition-transform hover:scale-105 active:scale-95 font-sans font-medium">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>Download Assets</span>
+</button>
+</div>
+</div>
+</body></html>

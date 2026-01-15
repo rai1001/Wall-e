@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ADHD Accessibility Guidelines</title>
+<!-- Google Fonts: Newsreader -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#17cf17",
+              "background-light": "#f6f8f6",
+              "background-dark": "#112111",
+              "surface-dark": "#1a2a1a",
+            },
+            fontFamily: {
+              "display": ["Newsreader", "serif"],
+              "sans": ["Noto Sans", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.5rem", 
+              "lg": "1rem", 
+              "xl": "1.5rem", 
+              "2xl": "2rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark font-display overflow-x-hidden selection:bg-primary/30">
+<!-- Ambient Background Globs for "Organic" feel -->
+<div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="absolute top-1/3 -left-20 w-72 h-72 bg-primary/5 rounded-full blur-[80px]"></div>
+<div class="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-[90px]"></div>
+</div>
+<!-- Header -->
+<div class="relative z-10 sticky top-0 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-white/5 p-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<button class="text-black dark:text-white flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+</div>
+<h2 class="text-black dark:text-white text-lg font-bold italic tracking-wide">ChefOS Assistant</h2>
+<div class="flex items-center justify-end">
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-primary">gavel</span>
+</button>
+</div>
+</div>
+<!-- Main Content -->
+<div class="relative z-10 px-4 pb-24 pt-6 flex flex-col gap-6">
+<!-- Title Section -->
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-xl">accessibility_new</span>
+<span class="text-primary text-sm font-bold tracking-widest uppercase font-sans">Guidelines</span>
+</div>
+<h1 class="text-black dark:text-white text-[40px] leading-[1.1] font-medium italic mb-4">
+                ADHD Accessibility <br/>
+<span class="opacity-50">Standards</span>
+</h1>
+<p class="text-gray-600 dark:text-gray-300 text-lg leading-relaxed font-sans font-light">
+                A design framework specifically calibrated for neurodivergent focus, reducing cognitive load through visual calm and intentional interaction.
+            </p>
+</div>
+<!-- Section 1: Visual Calm -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-black dark:text-white text-xl font-bold italic">Visual Calm</h3>
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-600">visibility_off</span>
+</div>
+<div class="group relative overflow-hidden rounded-2xl bg-white dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-white/5">
+<div class="flex flex-col md:flex-row">
+<div class="p-6 flex-1 flex flex-col justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold font-sans tracking-wide">CLUTTER REDUCTION</span>
+</div>
+<h4 class="text-black dark:text-white text-2xl font-bold mb-2">Aggressive Whitespace</h4>
+<p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed font-sans">
+                                Limit decorative elements that don't serve a function. Every pixel should earn its place to prevent visual overstimulation.
+                            </p>
+</div>
+</div>
+<div class="relative w-full md:w-48 h-48 md:h-auto bg-gray-100 dark:bg-black/20 shrink-0">
+<div class="absolute inset-0 w-full h-full" data-alt="Abstract minimalist white layout with plenty of breathing room" style="background: radial-gradient(circle at center, #2e4a2e 0%, #1a2a1a 100%);"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/40 text-6xl">grid_off</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Cognitive Load -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-black dark:text-white text-xl font-bold italic">Cognitive Load</h3>
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-600">battery_saver</span>
+</div>
+<div class="group rounded-2xl bg-white dark:bg-surface-dark shadow-sm border border-gray-100 dark:border-white/5 p-6">
+<div class="flex items-start gap-4">
+<div class="shrink-0 size-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">touch_app</span>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="text-black dark:text-white text-2xl font-bold">One Primary Action</h4>
+<p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed font-sans">
+                            Each screen should focus on a single objective. Secondary actions must be visually subordinate to prevent decision paralysis.
+                        </p>
+<div class="mt-2 flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full border border-gray-200 dark:border-white/10 text-xs font-sans text-gray-500 dark:text-gray-400">#FocusLock</span>
+<span class="px-3 py-1 rounded-full border border-gray-200 dark:border-white/10 text-xs font-sans text-gray-500 dark:text-gray-400">#SingularGoal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: The Kal-el Effect -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-black dark:text-white text-xl font-bold italic">The Kal-el Effect</h3>
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-600">favorite</span>
+</div>
+<div class="rounded-2xl bg-gradient-to-br from-white to-gray-50 dark:from-surface-dark dark:to-black border border-gray-100 dark:border-white/5 overflow-hidden">
+<div class="h-2 bg-primary w-full"></div>
+<div class="p-6">
+<h4 class="text-black dark:text-white text-2xl font-bold mb-3">Support, Don't Shame</h4>
+<p class="text-gray-600 dark:text-gray-400 text-base leading-relaxed font-sans mb-4">
+                        Error messages and empty states should offer emotional support and clear paths forward, rather than guilt.
+                    </p>
+<div class="bg-background-light dark:bg-background-dark/50 rounded-xl p-4 flex items-center gap-3 border border-dashed border-gray-300 dark:border-white/10">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<p class="text-sm font-sans italic text-gray-500 dark:text-gray-300">"Let's try that again. You're doing great."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4: Focus Lock Rules -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-black dark:text-white text-xl font-bold italic">Focus Lock Rules</h3>
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-600">lock</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Rule Card 1 -->
+<div class="rounded-2xl bg-white dark:bg-surface-dark p-5 border border-gray-100 dark:border-white/5 flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary text-3xl mb-1">notifications_off</span>
+<h4 class="text-lg font-bold text-black dark:text-white">Minimize Interruptions</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 font-sans">Suppress non-critical notifications during active workflows.</p>
+</div>
+<!-- Rule Card 2 -->
+<div class="rounded-2xl bg-white dark:bg-surface-dark p-5 border border-gray-100 dark:border-white/5 flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary text-3xl mb-1">timer</span>
+<h4 class="text-lg font-bold text-black dark:text-white">Time Blindness Aid</h4>
+<p class="text-sm text-gray-600 dark:text-gray-400 font-sans">Visualize time passage with graphical timers, not just countdowns.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Sheet / "Sidebar" for Compliance -->
+<div class="fixed bottom-0 left-0 w-full z-20">
+<!-- Gradient fade for content above -->
+<div class="h-12 w-full bg-gradient-to-t from-background-light dark:from-background-dark to-transparent pointer-events-none"></div>
+<div class="bg-white dark:bg-[#152515] rounded-t-3xl border-t border-gray-200 dark:border-white/10 shadow-[0_-8px_30px_rgba(0,0,0,0.3)] pb-8 pt-6 px-6">
+<div class="w-12 h-1.5 bg-gray-300 dark:bg-white/20 rounded-full mx-auto mb-6"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div>
+<h4 class="text-base font-bold text-black dark:text-white leading-tight">WCAG AA Compliance</h4>
+<p class="text-xs text-primary font-sans font-medium">Standards Active</p>
+</div>
+</div>
+<button class="text-sm font-sans font-bold text-black dark:text-white underline decoration-primary decoration-2 underline-offset-4">
+                     View Checklist
+                 </button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+<div class="shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-gray-500 dark:text-gray-400">contrast</span>
+<span class="text-xs font-sans text-gray-700 dark:text-gray-300">Contrast 4.5:1</span>
+</div>
+<div class="shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-gray-500 dark:text-gray-400">touch_app</span>
+<span class="text-xs font-sans text-gray-700 dark:text-gray-300">Target 44px</span>
+</div>
+<div class="shrink-0 flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-50 dark:bg-black/40 border border-gray-200 dark:border-white/5">
+<span class="material-symbols-outlined text-sm text-gray-500 dark:text-gray-400">subtitles</span>
+<span class="text-xs font-sans text-gray-700 dark:text-gray-300">Text Resizing</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

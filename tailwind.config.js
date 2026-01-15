@@ -7,19 +7,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        action: {
-            DEFAULT: '#2563EB', // blue-600
-            hover: '#1D4ED8', // blue-700
-        },
-        status: {
-            ok: '#10B981', // green-500
-        },
-        pending: '#FBBF24', // amber-400
-        alert: '#EF4444', // red-500
-        surface: '#F2F4F6', // off-white-gray
+        "cream": "#FFFBF2",
+        "terracotta": "#D2691E",
+        "sage": "#87A96B",
+        "main": "#3C3C3C",
+        "accent": "#FF8C42",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        "display": ["Fraunces", "serif"],
+        "body": ["Inter", "sans-serif"],
+      },
+      borderRadius: {
+        "xl": "24px",
+      },
+      boxShadow: {
+        "soft": "0 8px 30px rgba(0,0,0,0.04)",
       },
     },
   },

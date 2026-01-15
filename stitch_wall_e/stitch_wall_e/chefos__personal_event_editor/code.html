@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS: Personal Event Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "primary-hover": "#d66e0b",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                        "cream": "#FFFBF5", 
+                        "warm-gray": "#EBE5DE",
+                        "text-main": "#2c1810",
+                        "text-muted": "#8c786a",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "2rem", 
+                        "xl": "3rem", 
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'warm': '0 20px 40px -5px rgba(60, 40, 30, 0.15), 0 10px 20px -5px rgba(60, 40, 30, 0.1)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+        
+        /* Input autofill styling override for warm theme */
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active{
+            -webkit-box-shadow: 0 0 0 30px #fcfaf8 inset !important;
+            -webkit-text-fill-color: #2c1810 !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex items-center justify-center font-display overflow-hidden relative">
+<!-- Background Image/Wallpaper with Blur Effect -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center opacity-40 blur-sm" data-alt="Blurred warm kitchen background texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBfkkqX-4aPaKCp0KShtOxGO2iFHKUfZcGEsLwaH8Ny81dWoMsW-MjA8X-UcIMWN3T1uXcGxZEkx2AxbrmrODTo4Ov_8m4F4SyeiPn5L73IjMMzhQ4r0N_2uJE9Z0ahReMNj7gtQf_zMvS67qNUYlrc3yDl3ImzVPQel0ITJD9aOqM7-wP1meLkl4ufvIEWegSRVNC1_hWkwBlxU2O8En591k34-NnGWB5dfpDUhK3L0v6xX3Z3aV09Z6qZOGaDpch-ZP3xWsp107FO');">
+</div>
+<div class="absolute inset-0 bg-background-light/60 dark:bg-background-dark/80 backdrop-blur-sm"></div>
+</div>
+<!-- Main Modal Container -->
+<div class="relative z-10 w-full max-w-md px-4">
+<!-- Pug Illustration Peeking -->
+<div class="absolute -top-24 -right-2 z-20 w-32 h-32 pointer-events-none drop-shadow-lg transform rotate-6">
+<div class="w-full h-full bg-contain bg-bottom bg-no-repeat" data-alt="Cute pug dog looking curiously at the user" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpUxo429-UqH81h14huK3LdXeB_8jUVhznS6rQJe80eSrDpLLGE57IbCOMdVX_Sm1ZhpUOtOjTSE8qDR4sUoraXUSjyt-F3m8rkBHJkwonZiflYCAD-QX7zu-pAnWZMhICtkt_y0SULSnoURTw3qA8acd0jZwFiQnR6GBJCTV4gXf_rnLTjceq1jDPQWXwVz_SgqxQkNA2hGc8xyFk15hwMfCw1Wkt1kr8yS8hE8nSCqv0lJ38tVtT02yfegjwZiAN_lS5lWYfvSAt'); mask-image: linear-gradient(to bottom, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);">
+</div>
+</div>
+<!-- Card Content -->
+<div class="bg-cream dark:bg-[#2A2018] rounded-[2.5rem] shadow-warm p-6 pb-8 relative overflow-hidden border border-white/50 dark:border-white/10">
+<!-- Header Section -->
+<div class="flex items-center justify-between mb-6">
+<button class="text-text-muted hover:text-text-main dark:text-gray-400 dark:hover:text-white transition-colors p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10">
+<span class="material-symbols-outlined !text-[28px]">close</span>
+</button>
+<h2 class="text-2xl font-bold text-text-main dark:text-white tracking-tight text-center flex-1 pr-10">
+                    Plan Something New
+                </h2>
+</div>
+<!-- Form Content -->
+<div class="space-y-5">
+<!-- Event Title Input -->
+<div class="relative group">
+<label class="block text-sm font-medium text-text-muted dark:text-gray-400 mb-1.5 ml-4">What's happening?</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined">edit</span>
+</span>
+<input class="w-full bg-white dark:bg-white/5 border-none rounded-full py-4 pl-12 pr-4 text-lg text-text-main dark:text-white placeholder-text-muted/50 focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-cream dark:focus:ring-offset-[#2A2018] shadow-sm transition-all" placeholder="e.g., Dinner with Mom" type="text"/>
+</div>
+</div>
+<!-- Category Segmented Control -->
+<div class="py-2">
+<div class="bg-warm-gray/50 dark:bg-white/5 p-1.5 rounded-full flex relative">
+<!-- Radio Inputs (Hidden logic, visual styling) -->
+<label class="flex-1 relative cursor-pointer group">
+<input class="peer sr-only" name="category" type="radio" value="work"/>
+<div class="w-full py-3 rounded-full text-center text-sm font-semibold text-text-muted dark:text-gray-400 transition-all peer-checked:bg-white dark:peer-checked:bg-primary peer-checked:text-primary dark:peer-checked:text-white peer-checked:shadow-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined !text-[18px]">work</span>
+                                Work
+                            </div>
+</label>
+<label class="flex-1 relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="category" type="radio" value="home"/>
+<div class="w-full py-3 rounded-full text-center text-sm font-semibold text-text-muted dark:text-gray-400 transition-all peer-checked:bg-white dark:peer-checked:bg-primary peer-checked:text-primary dark:peer-checked:text-white peer-checked:shadow-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined !text-[18px]">home</span>
+                                Home
+                            </div>
+</label>
+</div>
+</div>
+<!-- Time and Location Row -->
+<div class="flex flex-col gap-4">
+<!-- Time -->
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</span>
+<input class="w-full bg-white dark:bg-white/5 border-none rounded-2xl py-3.5 pl-12 pr-4 text-base text-text-main dark:text-white placeholder-text-muted/50 focus:ring-2 focus:ring-primary focus:ring-offset-1 focus:ring-offset-cream dark:focus:ring-offset-[#2A2018] shadow-sm transition-all" placeholder="Select Time" type="text" value="7:00 PM"/>
+</div>
+<!-- Location -->
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined">location_on</span>
+</span>
+<input class="w-full bg-white dark:bg-white/5 border-none rounded-2xl py-3.5 pl-12 pr-4 text-base text-text-main dark:text-white placeholder-text-muted/50 focus:ring-2 focus:ring-primary focus:ring-offset-1 focus:ring-offset-cream dark:focus:ring-offset-[#2A2018] shadow-sm transition-all" placeholder="Add Location" type="text"/>
+</div>
+</div>
+<!-- Notes / Description (Optional but adds nice vertical rhythm) -->
+<div class="relative pt-2">
+<textarea class="w-full bg-transparent border-b-2 border-warm-gray dark:border-white/10 px-2 py-2 text-base text-text-main dark:text-white placeholder-text-muted/50 focus:ring-0 focus:border-primary transition-colors resize-none" placeholder="Add a note..." rows="2"></textarea>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="mt-8">
+<button class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-4 rounded-full shadow-lg shadow-primary/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined group-hover:animate-bounce">check</span>
+                    Save Event
+                </button>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -bottom-12 -left-12 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute top-0 right-0 w-24 h-24 bg-orange-200/20 dark:bg-orange-900/10 rounded-full blur-xl pointer-events-none"></div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warm Friendly: Cozy Empty State with Pug</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#e8a530",
+              "background-light": "#fcfaf8", // Slightly warmer off-white from user request
+              "background-dark": "#211b11",
+              "surface-light": "#f3efe7",
+              "surface-dark": "#2d261a",
+              "text-main-light": "#1b160e",
+              "text-main-dark": "#eceae5",
+              "text-sub-light": "#7e7464",
+              "text-sub-dark": "#a8a196",
+            },
+            fontFamily: {
+              "display": ["Newsreader", "serif"],
+              "sans": ["Noto Sans", "sans-serif"],
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: "Newsreader", serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<header class="flex flex-col gap-2 p-4 pb-2 z-10">
+<div class="flex items-center h-12 justify-between">
+<button class="text-text-main-light dark:text-text-main-dark flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-surface-light dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="flex gap-2">
+<button class="text-text-main-light dark:text-text-main-dark flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-surface-light dark:hover:bg-surface-dark transition-colors">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+<div class="size-10 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="User profile picture placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDvRKZPb8QLGiPuoUaN63yxk6X6_USwUqu4EXHCkvV75V0BY6zIacFto0w4k1tGF3jYmYDV2_r-ASc0RZ0452OF6gUgdQz5j_6VqBwj2QwuT13OI1Sw3Hzt9OvsspMOw2s9GsZ-eVwVHtneStVx3lCafKXLrilmS_cE3pDTFs76yhbiBvzn6Orv0iaAE7XyExYnxGwTDPCuH3keauFus3Mt6urLTN7MnsoGQH2EUC5wmN5J8WfZ1acYtzBLuXVfsLB5mvOhkTphm4ks");'></div>
+</div>
+</div>
+<div class="px-2">
+<p class="text-text-sub-light dark:text-text-sub-dark text-lg font-medium italic">Hello, Friend</p>
+<p class="text-text-main-light dark:text-text-main-dark tracking-tight text-[32px] font-bold leading-tight">Today, Oct 24</p>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center px-6 py-4">
+<div class="flex flex-col items-center w-full max-w-[360px] gap-8 animate-fade-in">
+<div class="relative w-full aspect-square max-w-[300px] rounded-full bg-gradient-to-b from-[#fdfbf7] to-[#f3efe7] dark:from-[#2a241b] dark:to-[#211b11] border border-[#eee8dc] dark:border-[#383025] flex items-center justify-center overflow-hidden shadow-inner">
+<div class="absolute inset-0 bg-cover bg-center opacity-90 dark:opacity-80 mix-blend-multiply dark:mix-blend-normal" data-alt="Cozy illustration of an empty comfortable armchair with a sleepy pug sitting on the rug next to it, warm lighting" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD6KZSQqNHum7BiWpLrCPItndJ53YCndR6ykRfW7t6RJW58TPu-jdZyZJgd0nHFUWuLsm_Gg3bo2VOaVF_LYByyEBnFHaXgWCIDZMuggf89k-3Xm_qTU4h4UpCEp20Kw-sTYr4XZjOKCs8KNq6aFDn7-TEyvaj1c9kE0gghaGlOi3TgEiblEzLqePH_eXMSZpGsnedQgx2WRCn_DVznT2lqRvt4dmxX33JEqqJ-nY2Rh3E7QZGUQbYSHdJZLy_zHk7VyVwYGVsS0UNg"); mask-image: radial-gradient(circle, black 60%, transparent 100%); -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none"></div>
+</div>
+<div class="flex flex-col items-center gap-3 text-center">
+<h2 class="text-text-main-light dark:text-text-main-dark text-2xl font-bold font-display leading-tight tracking-tight">
+                        Your schedule is clear for now
+                    </h2>
+<p class="text-text-sub-light dark:text-text-sub-dark text-base font-medium leading-relaxed max-w-[280px]">
+                        Take a deep breath. <br/>The day is yours to shape at your own pace.
+                    </p>
+</div>
+<div class="flex flex-col gap-3 w-full items-center pt-2">
+<button class="relative flex w-full max-w-[280px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary hover:bg-[#d99622] text-white shadow-md transition-all active:scale-95 group">
+<span class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+<span class="material-symbols-outlined mr-2 text-[20px]">add_circle</span>
+<span class="text-base font-bold tracking-wide">Add your first event</span>
+</button>
+<button class="flex w-full max-w-[280px] cursor-pointer items-center justify-center rounded-xl h-10 px-4 text-primary hover:text-[#d99622] hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors">
+<span class="text-sm font-bold tracking-wide border-b border-primary/30 pb-0.5">Connect a calendar</span>
+</button>
+</div>
+</div>
+</main>
+<div class="fixed bottom-24 right-6 z-20">
+<button class="flex size-14 cursor-pointer items-center justify-center rounded-full bg-primary text-white shadow-lg hover:bg-[#d99622] hover:scale-105 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+</div>
+<nav class="sticky bottom-0 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-t border-[#eee8dc] dark:border-[#383025] px-6 pb-6 pt-3 z-30">
+<div class="flex justify-between items-center max-w-sm mx-auto">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-text-sub-light dark:text-text-sub-dark hover:text-primary dark:hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">home</span>
+<span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary dark:text-primary" href="#">
+<span class="material-symbols-outlined fill scale-110">calendar_month</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Today</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-text-sub-light dark:text-text-sub-dark hover:text-primary dark:hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">check_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wider opacity-70">Tasks</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-text-sub-light dark:text-text-sub-dark hover:text-primary dark:hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">person</span>
+<span class="text-[10px] font-bold uppercase tracking-wider opacity-70">You</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

@@ -1,18 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import '@fontsource/newsreader/400.css';
+import '@fontsource/newsreader/500.css';
+import '@fontsource/newsreader/700.css';
+import '@fontsource/noto-sans/400.css';
+import '@fontsource/noto-sans/500.css';
+import '@fontsource/noto-sans/700.css';
 import App from './App.tsx'
 
-console.log('Main.tsx executing...');
-const rootElement = document.getElementById('root');
-console.log('Root element:', rootElement);
-
-if (rootElement) {
-  createRoot(rootElement).render(
+createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <App />
+        <App />
     </StrictMode>,
-  )
-} else {
-  console.error('Failed to find root element');
-}
+)

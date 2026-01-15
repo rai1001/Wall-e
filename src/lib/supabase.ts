@@ -4,7 +4,27 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Missing Supabase environment variables. Please check .env file.');
+    console.warn('Missing Supabase environment variables');
 }
 
 export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+
+export const signInWithGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+            scopes: 'https://www.googleapis.com/auth/calendar.readonly', // Read-only for now for safety
+            queryParams: {
+                access_type: 'offline',
+                prompt: 'consent',
+            },
+            redirectTo: window.location.origin + '/connections'
+        },
+    });
+    if (error) throw error;
+};
+
+export const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+};

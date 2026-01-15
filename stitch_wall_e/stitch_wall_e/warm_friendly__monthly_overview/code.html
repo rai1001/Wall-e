@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warm Friendly Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee6c2b",
+                        "secondary": "#8ba88e", // Sage Green
+                        "background-light": "#fcf9f8",
+                        "background-dark": "#221610",
+                        "surface": "#ffffff",
+                        "surface-dark": "#2d1e16",
+                        "text-main": "#1b120d",
+                        "text-muted": "#9a664c",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(27, 18, 13, 0.05)',
+                        'glow': '0 0 15px rgba(238, 108, 43, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Heatmap glow effect */
+        .heatmap-high {
+            background: radial-gradient(circle at center, rgba(238, 108, 43, 0.25) 0%, rgba(238, 108, 43, 0.05) 70%, transparent 100%);
+        }
+        .heatmap-med {
+            background: radial-gradient(circle at center, rgba(238, 108, 43, 0.15) 0%, rgba(238, 108, 43, 0.02) 60%, transparent 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased selection:bg-primary/20">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-light">
+<!-- Header / Top Navigation -->
+<header class="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-background-light/95 backdrop-blur-sm">
+<button aria-label="Previous Month" class="flex items-center justify-center p-2 rounded-full hover:bg-black/5 transition-colors text-text-main">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<div class="flex flex-col items-center">
+<h2 class="text-2xl font-bold tracking-tight text-text-main italic">October 2023</h2>
+</div>
+<button class="flex items-center justify-center px-3 py-1 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors">
+<span class="text-primary text-sm font-bold tracking-wide">Today</span>
+</button>
+</header>
+<!-- Main Calendar Grid -->
+<main class="flex-1 px-4 pt-2 pb-8">
+<!-- Weekday Headers -->
+<div class="grid grid-cols-7 mb-2">
+<div class="h-10 flex items-center justify-center text-xs font-bold text-text-muted uppercase tracking-wider">S</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-text-muted uppercase tracking-wider">M</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-text-muted uppercase tracking-wider">T</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-text-muted uppercase tracking-wider">W</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-text-muted uppercase tracking-wider">T</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-text-muted uppercase tracking-wider">F</div>
+<div class="h-10 flex items-center justify-center text-xs font-bold text-text-muted uppercase tracking-wider">S</div>
+</div>
+<!-- Days Grid -->
+<div class="grid grid-cols-7 gap-y-2 gap-x-1">
+<!-- Empty days previous month -->
+<div class="aspect-square"></div>
+<div class="aspect-square"></div>
+<div class="aspect-square"></div>
+<div class="aspect-square"></div>
+<!-- Day 1 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">1</span>
+</button>
+<!-- Day 2 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">2</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+</div>
+</button>
+<!-- Day 3 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">3</span>
+</button>
+<!-- Day 4 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all heatmap-med">
+<span class="text-base font-medium">4</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+<div class="w-1 h-1 rounded-full bg-secondary"></div>
+</div>
+</button>
+<!-- Day 5 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">5</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-1 h-1 rounded-full bg-secondary"></div>
+</div>
+</button>
+<!-- Day 6 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">6</span>
+</button>
+<!-- Day 7 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">7</span>
+</button>
+<!-- Day 8 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">8</span>
+</button>
+<!-- Day 9 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">9</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+</div>
+</button>
+<!-- Day 10 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">10</span>
+</button>
+<!-- Day 11 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all heatmap-high">
+<span class="text-base font-medium">11</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+<div class="w-1 h-1 rounded-full bg-primary"></div>
+<div class="w-1 h-1 rounded-full bg-secondary"></div>
+</div>
+</button>
+<!-- Day 12 - SELECTED -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-xl bg-surface shadow-soft scale-110 z-10 border border-black/5 transition-all">
+<span class="text-lg font-bold text-primary">12</span>
+<div class="flex gap-0.5 mt-1">
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+</button>
+<!-- Day 13 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all heatmap-med">
+<span class="text-base font-medium">13</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-1 h-1 rounded-full bg-secondary"></div>
+<div class="w-1 h-1 rounded-full bg-secondary"></div>
+</div>
+</button>
+<!-- Day 14 -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all">
+<span class="text-base font-medium">14</span>
+<div class="flex gap-0.5 mt-0.5">
+<div class="w-1 h-1 rounded-full bg-secondary"></div>
+</div>
+</button>
+<!-- Day 15-31 (Simplified loop simulation) -->
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">15</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">16</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">17</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all heatmap-med">
+<span class="text-base font-medium">18</span>
+<div class="flex gap-0.5 mt-0.5"><div class="w-1 h-1 rounded-full bg-primary"></div></div>
+</button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">19</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">20</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">21</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">22</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">23</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">24</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">25</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all heatmap-high">
+<span class="text-base font-medium">26</span>
+<div class="flex gap-0.5 mt-0.5"><div class="w-1 h-1 rounded-full bg-primary"></div><div class="w-1 h-1 rounded-full bg-secondary"></div></div>
+</button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">27</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">28</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">29</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">30</span></button>
+<button class="group relative flex flex-col items-center justify-center aspect-square rounded-full hover:bg-black/5 transition-all"><span class="text-base font-medium">31</span></button>
+</div>
+</main>
+<!-- Selected Day Context -->
+<section class="mx-4 mb-8 bg-surface rounded-xl shadow-soft p-5 border border-black/5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-lg font-bold text-text-main">Tuesday, Oct 12</h3>
+<p class="text-sm text-text-muted mt-1">4 Events • Focus Day</p>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">edit_calendar</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex gap-3 items-center p-3 rounded-lg bg-background-light border border-black/5">
+<div class="w-1 h-8 rounded-full bg-primary shrink-0"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-text-main">Strategy Meeting</p>
+<p class="text-xs text-text-muted">10:00 AM - 11:30 AM</p>
+</div>
+</div>
+<div class="flex gap-3 items-center p-3 rounded-lg bg-background-light border border-black/5">
+<div class="w-1 h-8 rounded-full bg-secondary shrink-0"></div>
+<div class="flex-1">
+<p class="text-sm font-bold text-text-main">Lunch with Sarah</p>
+<p class="text-xs text-text-muted">12:30 PM - 1:30 PM</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-3 rounded-lg text-primary text-sm font-bold flex items-center justify-center gap-2 hover:bg-primary/5 transition-colors">
+<span>View Full Day</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</section>
+<!-- Bottom Sheet / Overview Stats -->
+<section class="bg-surface rounded-t-[2rem] shadow-[0_-4px_20px_-2px_rgba(27,18,13,0.05)] border-t border-black/5 pt-8 pb-10 px-6">
+<div class="w-12 h-1 bg-black/10 rounded-full mx-auto mb-6"></div>
+<h3 class="text-xl font-bold text-text-main mb-6 italic">This Month's Vibe</h3>
+<!-- Balance Chart -->
+<div class="mb-8">
+<div class="flex justify-between items-end mb-2">
+<p class="text-sm font-bold text-text-muted uppercase tracking-wide">Work vs Home</p>
+<p class="text-2xl font-bold text-text-main tracking-tight">60% <span class="text-base font-normal text-text-muted">Work</span></p>
+</div>
+<div class="h-4 w-full bg-background-light rounded-full overflow-hidden flex">
+<div class="h-full bg-primary w-[60%]"></div>
+<div class="h-full bg-secondary w-[40%]"></div>
+</div>
+<div class="flex justify-between mt-2 text-xs text-text-muted font-medium">
+<span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-primary"></div> Work (Heavy)</span>
+<span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-secondary"></div> Home (Light)</span>
+</div>
+</div>
+<!-- Intentions -->
+<div>
+<p class="text-sm font-bold text-text-muted uppercase tracking-wide mb-3">Monthly Intentions</p>
+<div class="space-y-3">
+<label class="group flex gap-x-3 items-center p-3 rounded-xl hover:bg-background-light transition-colors cursor-pointer select-none">
+<div class="relative flex items-center justify-center">
+<input checked="" class="peer h-5 w-5 rounded border-2 border-text-muted/30 text-primary focus:ring-0 focus:ring-offset-0 transition-all checked:bg-primary checked:border-primary" type="checkbox"/>
+</div>
+<p class="text-text-main text-base font-medium decoration-primary/30 peer-checked:line-through peer-checked:text-text-muted transition-colors">Cook dinner twice a week</p>
+</label>
+<label class="group flex gap-x-3 items-center p-3 rounded-xl hover:bg-background-light transition-colors cursor-pointer select-none">
+<div class="relative flex items-center justify-center">
+<input class="peer h-5 w-5 rounded border-2 border-text-muted/30 text-primary focus:ring-0 focus:ring-offset-0 transition-all checked:bg-primary checked:border-primary" type="checkbox"/>
+</div>
+<p class="text-text-main text-base font-medium decoration-primary/30 peer-checked:line-through peer-checked:text-text-muted transition-colors">Finish tax prep</p>
+</label>
+<label class="group flex gap-x-3 items-center p-3 rounded-xl hover:bg-background-light transition-colors cursor-pointer select-none">
+<div class="relative flex items-center justify-center">
+<input class="peer h-5 w-5 rounded border-2 border-text-muted/30 text-primary focus:ring-0 focus:ring-offset-0 transition-all checked:bg-primary checked:border-primary" type="checkbox"/>
+</div>
+<p class="text-text-main text-base font-medium decoration-primary/30 peer-checked:line-through peer-checked:text-text-muted transition-colors">Morning walks</p>
+</label>
+</div>
+</div>
+</section>
+<!-- FAB Add Event -->
+<button class="fixed bottom-6 right-6 h-14 w-14 rounded-full bg-primary text-white shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-105 transition-transform z-30">
+<span class="material-symbols-outlined text-[28px]">add</span>
+</button>
+</div>
+</body></html>

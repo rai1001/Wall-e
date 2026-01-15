@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS Mobile Interface</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#11d432",
+                        "primary-dark": "#0ea326",
+                        "sage": "#dce8dd",
+                        "sage-dark": "#2a3d2e",
+                        "cream": "#f9f7f2",
+                        "cream-dark": "#1a1c1a",
+                        "background-light": "#f9f7f2",
+                        "background-dark": "#102213",
+                        "text-main": "#0d1b10",
+                        "text-main-dark": "#eef4ef",
+                        "text-secondary": "#4c9a59",
+                        "text-secondary-dark": "#8bc795",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom Scrollbar for hidden look but functional scroll */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-text-main-dark font-display antialiased selection:bg-primary selection:text-white overflow-hidden h-screen w-full flex flex-col relative">
+<!-- Header Section -->
+<header class="flex-none pt-12 pb-2 px-6 bg-background-light dark:bg-background-dark z-10 sticky top-0">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-text-secondary dark:text-text-secondary-dark text-sm font-bold tracking-wider uppercase mb-1">Good Morning</span>
+<h2 class="text-2xl font-extrabold leading-tight tracking-tight text-text-main dark:text-text-main-dark">Wednesday, Oct 24</h2>
+</div>
+<div class="flex shrink-0 items-center justify-center rounded-full border-2 border-primary p-0.5">
+<!-- Avatar: Kal-el -->
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shadow-sm" data-alt="Golden Retriever dog face looking happy" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC-wtGdBTzhe3m0Q6N9ipWMzswW5-Alk-YJdUbfbPyvARwv5x5SyWTm99lcQZFXRliPKhIsMCpHTasTJEzeO10ZY54c-VNNq4e15GouNgNDqODH9Qz5Rv3GJidGf609vvg8IvC7cyLnxF5fomoDIOX1vUlc_7RfYveE-3oknvFggjzJdwxCGjEEyfhJEM3OjTmf7RxoVBcq7PTYMTS4a1aevtJ1QQbbqxJjyNd6mMGA7Xq41PtIVzC5llwN0hxS_JEkYNYPGnDrLXGV");'>
+</div>
+</div>
+</div>
+<!-- Quick Stats / Context -->
+<div class="mt-6 flex gap-3 overflow-x-auto scrollbar-hide pb-2">
+<div class="bg-primary/10 dark:bg-primary/20 text-primary-dark dark:text-primary rounded-full px-4 py-2 text-sm font-bold flex items-center gap-2 whitespace-nowrap border border-primary/10">
+<span class="material-symbols-outlined text-[18px]">sunny</span>
+                72°F Sunny
+            </div>
+<div class="bg-white dark:bg-sage-dark text-text-main dark:text-text-main-dark rounded-full px-4 py-2 text-sm font-bold flex items-center gap-2 whitespace-nowrap shadow-sm border border-black/5 dark:border-white/5">
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+                Energy High
+            </div>
+</div>
+</header>
+<!-- Main Content: Scrollable Timeline -->
+<main class="flex-1 overflow-y-auto overflow-x-hidden w-full pb-32">
+<div class="px-6 pt-2">
+<h3 class="text-lg font-bold mb-6 text-text-main dark:text-text-main-dark opacity-90">Your Agenda</h3>
+<div class="flex flex-col relative">
+<!-- Vertical Line -->
+<div class="absolute left-[19px] top-4 bottom-10 w-0.5 bg-sage dark:bg-sage-dark/50 z-0 rounded-full"></div>
+<!-- Timeline Item 1: Active/Done -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4 mb-6 relative group">
+<div class="flex flex-col items-center pt-1 z-10">
+<div class="size-10 rounded-full bg-sage dark:bg-sage-dark flex items-center justify-center text-text-secondary dark:text-text-secondary-dark ring-4 ring-background-light dark:ring-background-dark">
+<span class="material-symbols-outlined">check</span>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-sage-dark/30 p-4 rounded-2xl border border-sage dark:border-white/5 opacity-60">
+<div class="flex justify-between items-start mb-1">
+<p class="text-sm font-bold text-text-secondary dark:text-text-secondary-dark">08:00 AM</p>
+<span class="text-xs font-semibold bg-gray-100 dark:bg-gray-800 text-gray-500 px-2 py-0.5 rounded-md">Done</span>
+</div>
+<p class="text-lg font-bold text-text-main dark:text-text-main-dark line-through decoration-text-secondary/50">Morning Walk</p>
+</div>
+</div>
+<!-- Timeline Item 2: Current/Focus -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4 mb-6 relative">
+<div class="flex flex-col items-center pt-1 z-10">
+<div class="size-10 rounded-full bg-primary text-white flex items-center justify-center ring-4 ring-background-light dark:ring-background-dark shadow-lg shadow-primary/30 animate-pulse">
+<span class="material-symbols-outlined">soup_kitchen</span>
+</div>
+</div>
+<!-- Current Task Card -->
+<div class="flex flex-col bg-primary/10 dark:bg-primary/20 p-5 rounded-2xl border border-primary/30 shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -top-6 size-24 bg-primary/20 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-center mb-2">
+<p class="text-sm font-bold text-primary-dark dark:text-primary">09:00 AM • Now</p>
+<span class="bg-white dark:bg-black/20 text-xs font-bold px-2 py-1 rounded-lg text-primary-dark dark:text-primary">High Priority</span>
+</div>
+<h4 class="text-xl font-extrabold text-text-main dark:text-text-main-dark leading-tight mb-1">Meal Prep: Lunch</h4>
+<p class="text-sm text-text-main/70 dark:text-text-main-dark/70 font-medium">Chicken Quinoa Bowl</p>
+<div class="mt-4 flex gap-2">
+<button class="bg-primary text-white text-sm font-bold py-2 px-4 rounded-xl flex items-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span> Start
+                            </button>
+<button class="bg-white dark:bg-sage-dark text-text-main dark:text-text-main-dark text-sm font-bold py-2 px-4 rounded-xl border border-transparent dark:border-white/10 flex items-center gap-2">
+                                Details
+                            </button>
+</div>
+</div>
+</div>
+<!-- Timeline Item 3: Upcoming -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4 mb-6 relative">
+<div class="flex flex-col items-center pt-1 z-10">
+<div class="size-10 rounded-full bg-white dark:bg-sage-dark border-2 border-sage dark:border-white/10 flex items-center justify-center text-text-main dark:text-text-main-dark ring-4 ring-background-light dark:ring-background-dark">
+<span class="material-symbols-outlined text-[20px]">laptop_mac</span>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-sage-dark p-4 rounded-2xl border border-sage/50 dark:border-white/5 shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<p class="text-sm font-bold text-text-secondary dark:text-text-secondary-dark">12:00 PM</p>
+</div>
+<p class="text-lg font-bold text-text-main dark:text-text-main-dark">Deep Work Session</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="size-2 rounded-full bg-purple-400"></span>
+<span class="text-xs font-medium text-text-main/60 dark:text-text-main-dark/60">Productivity</span>
+</div>
+</div>
+</div>
+<!-- Timeline Item 4: Upcoming -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4 mb-6 relative">
+<div class="flex flex-col items-center pt-1 z-10">
+<div class="size-10 rounded-full bg-white dark:bg-sage-dark border-2 border-sage dark:border-white/10 flex items-center justify-center text-text-main dark:text-text-main-dark ring-4 ring-background-light dark:ring-background-dark">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-sage-dark p-4 rounded-2xl border border-sage/50 dark:border-white/5 shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<p class="text-sm font-bold text-text-secondary dark:text-text-secondary-dark">06:00 PM</p>
+</div>
+<p class="text-lg font-bold text-text-main dark:text-text-main-dark">Evening Wind Down</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="size-2 rounded-full bg-blue-400"></span>
+<span class="text-xs font-medium text-text-main/60 dark:text-text-main-dark/60">Wellness</span>
+</div>
+</div>
+</div>
+<!-- Timeline End Cap -->
+<div class="grid grid-cols-[40px_1fr] gap-x-4 mb-6 relative">
+<div class="flex flex-col items-center pt-1 z-10">
+<div class="size-3 rounded-full bg-sage dark:bg-sage-dark/50"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button Layer -->
+<div class="absolute bottom-[90px] right-6 z-20">
+<button class="group flex items-center justify-center rounded-full h-16 w-16 bg-primary text-text-main shadow-[0_8px_30px_rgb(17,212,50,0.4)] transition-all active:scale-90 hover:scale-105">
+<span class="material-symbols-outlined text-4xl text-white group-hover:rotate-12 transition-transform duration-300">pets</span>
+<span class="sr-only">Execute / Ahora Toca</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full bg-white/90 dark:bg-background-dark/95 backdrop-blur-md border-t border-sage dark:border-white/5 px-6 pb-8 pt-4 z-30 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.03)]">
+<div class="flex items-center justify-between">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<div class="bg-primary/10 rounded-full w-12 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px] font-bold">home</span>
+</div>
+<!-- <span class="text-[10px] font-bold">Home</span> -->
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-text-main-dark transition-colors" href="#">
+<div class="w-12 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">restaurant</span>
+</div>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-text-main-dark transition-colors" href="#">
+<div class="w-12 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">bar_chart</span>
+</div>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-400 dark:text-gray-500 hover:text-text-main dark:hover:text-text-main-dark transition-colors" href="#">
+<div class="w-12 h-8 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+</div>
+</a>
+</div>
+</nav>
+</body></html>

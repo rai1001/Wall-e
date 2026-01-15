@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS: Technical Data Schema</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                        "card-dark": "#2d241b",
+                        "text-secondary": "#c9ad92",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .schema-line {
+            position: absolute;
+            left: 2rem;
+            top: 3.5rem;
+            bottom: -2rem;
+            width: 2px;
+            background: linear-gradient(180deg, #ec7f13 0%, rgba(236, 127, 19, 0.2) 100%);
+            z-index: 0;
+        }
+        .schema-node:last-child .schema-line {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen font-display text-white selection:bg-primary selection:text-white overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-50 flex items-center bg-background-dark/95 backdrop-blur-md p-4 pb-2 justify-between border-b border-white/5">
+<div class="text-white flex size-12 shrink-0 items-center justify-start cursor-pointer hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-white" style="font-size: 24px;">arrow_back</span>
+</div>
+<div class="flex flex-col flex-1 items-center">
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">System Architecture</h2>
+</div>
+<div class="flex w-12 items-center justify-end cursor-pointer hover:opacity-80 transition-opacity">
+<span class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0">Export</span>
+</div>
+</div>
+<!-- Body Content -->
+<div class="relative flex flex-col w-full px-4 pt-4 pb-24 max-w-md mx-auto">
+<p class="text-text-secondary text-sm font-medium leading-normal mb-6 px-1">
+            Data Schema &amp; Logic Flow Visualization.<br/>
+<span class="opacity-70 text-xs font-normal">Visualizing relationship between User entities and Event prioritization logic.</span>
+</p>
+<!-- Node: Users -->
+<div class="relative flex gap-4 mb-2 schema-node group">
+<div class="schema-line"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center justify-center rounded-xl bg-card-dark border border-primary/20 shrink-0 size-16 shadow-lg shadow-black/20">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">badge</span>
+</div>
+</div>
+<div class="flex-1 pb-8">
+<div class="bg-card-dark rounded-xl p-4 border border-white/5 shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-base font-semibold">User Table</h3>
+<span class="text-[10px] font-mono bg-primary/20 text-primary px-1.5 py-0.5 rounded">PK: UUID</span>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs font-mono text-text-secondary/80 border-b border-white/5 pb-1 mb-1">
+<span>id</span>
+<span class="text-white">550e8400-e29b...</span>
+</div>
+<div class="flex justify-between text-xs font-mono text-text-secondary/80">
+<span>email</span>
+<span class="text-white">alex@chefos.com</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Node: Connected Accounts -->
+<div class="relative flex gap-4 mb-2 schema-node group">
+<div class="schema-line"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center justify-center rounded-xl bg-card-dark border border-white/10 shrink-0 size-16 shadow-lg shadow-black/20">
+<span class="material-symbols-outlined text-text-secondary" style="font-size: 28px;">hub</span>
+</div>
+</div>
+<div class="flex-1 pb-8">
+<div class="bg-card-dark rounded-xl p-4 border border-white/5 shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-base font-semibold">Connected Accounts</h3>
+<span class="text-[10px] font-mono bg-white/10 text-text-secondary px-1.5 py-0.5 rounded">FK: User_ID</span>
+</div>
+<div class="flex gap-2 mt-3">
+<div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-white text-sm">mail</span>
+<span class="text-xs text-text-secondary">Google</span>
+<div class="w-1.5 h-1.5 rounded-full bg-green-500 ml-1"></div>
+</div>
+<div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-lg border border-white/5 opacity-60">
+<span class="material-symbols-outlined text-white text-sm">mail</span>
+<span class="text-xs text-text-secondary">Outlook</span>
+<div class="w-1.5 h-1.5 rounded-full bg-yellow-500 ml-1"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Node: Calendars -->
+<div class="relative flex gap-4 mb-2 schema-node group">
+<div class="schema-line"></div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center justify-center rounded-xl bg-card-dark border border-white/10 shrink-0 size-16 shadow-lg shadow-black/20">
+<span class="material-symbols-outlined text-text-secondary" style="font-size: 28px;">calendar_month</span>
+</div>
+</div>
+<div class="flex-1 pb-8">
+<div class="bg-card-dark rounded-xl p-4 border border-white/5 shadow-md">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-white text-base font-semibold">Calendars</h3>
+<span class="text-[10px] font-mono bg-white/10 text-text-secondary px-1.5 py-0.5 rounded">FK: Account_ID</span>
+</div>
+<div class="flex justify-between text-xs font-mono text-text-secondary/80 border-b border-white/5 pb-1 mb-1">
+<span>sync_token</span>
+<span class="text-primary truncate max-w-[100px]">hg76...99s</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-green-500 text-sm">cloud_done</span>
+<span class="text-xs text-text-secondary">Last synced 2m ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Node: Events (Expanded) -->
+<div class="relative flex gap-4 mb-8 schema-node group">
+<!-- No schema line extending past here for now -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center justify-center rounded-xl bg-primary border border-primary shrink-0 size-16 shadow-lg shadow-orange-500/20">
+<span class="material-symbols-outlined text-white" style="font-size: 28px;">event_note</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="bg-card-dark rounded-xl p-0 border border-primary/30 shadow-md overflow-hidden">
+<div class="bg-primary/10 p-4 border-b border-primary/10">
+<div class="flex justify-between items-center mb-1">
+<h3 class="text-white text-lg font-bold">Events</h3>
+<span class="material-symbols-outlined text-primary text-lg">data_object</span>
+</div>
+<p class="text-xs text-text-secondary">Core scheduling entity with custom ADHD fields.</p>
+</div>
+<div class="p-4 space-y-4">
+<!-- Standard Fields -->
+<div class="grid grid-cols-2 gap-2 opacity-60">
+<div class="bg-white/5 p-2 rounded border border-white/5">
+<span class="block text-[10px] text-text-secondary uppercase tracking-wider mb-1">Start</span>
+<span class="font-mono text-xs text-white">ISO_8601</span>
+</div>
+<div class="bg-white/5 p-2 rounded border border-white/5">
+<span class="block text-[10px] text-text-secondary uppercase tracking-wider mb-1">End</span>
+<span class="font-mono text-xs text-white">ISO_8601</span>
+</div>
+</div>
+<!-- ADHD Metadata Section -->
+<div class="rounded-lg border border-primary/20 bg-primary/5 p-3">
+<h4 class="text-xs font-bold text-primary uppercase tracking-wider mb-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">psychology</span>
+                                ADHD Metadata
+                            </h4>
+<div class="space-y-3">
+<!-- Context Field -->
+<div class="flex flex-col gap-1">
+<span class="text-[10px] font-mono text-text-secondary">"context"</span>
+<div class="flex">
+<span class="bg-purple-500/20 text-purple-300 text-xs px-2 py-1 rounded-md border border-purple-500/30 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                                            Deep Work
+                                        </span>
+</div>
+</div>
+<!-- Micro Steps Field -->
+<div class="flex flex-col gap-1">
+<span class="text-[10px] font-mono text-text-secondary">"micro_steps" [Array]</span>
+<div class="pl-2 border-l border-white/10 space-y-1">
+<div class="text-xs text-white font-mono bg-white/5 p-1 rounded px-2">"Open Figma File"</div>
+<div class="text-xs text-white font-mono bg-white/5 p-1 rounded px-2">"Review comments"</div>
+</div>
+</div>
+<!-- Distraction Ref -->
+<div class="flex flex-col gap-1">
+<span class="text-[10px] font-mono text-text-secondary">"distraction_ref"</span>
+<div class="flex items-center gap-2 text-xs text-primary cursor-pointer hover:underline decoration-primary/50">
+<span class="material-symbols-outlined text-sm">link</span>
+                                        parking_lot_item_42
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Kal-el Logic Engine -->
+<div class="mt-4 mb-8">
+<div class="relative bg-[#1a140e] rounded-xl border border-primary/20 p-5 overflow-hidden">
+<!-- Background decorative elements -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">smart_toy</span>
+<h3 class="text-white font-bold text-lg">Kal-el Logic Engine</h3>
+</div>
+<div class="bg-black/40 rounded-lg p-3 font-mono text-xs text-gray-300 border border-white/5 relative mb-4">
+<div class="absolute right-2 top-2 w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<p class="text-primary mb-1">// Task Prioritization Algorithm</p>
+<p class="mb-1"><span class="text-purple-400">function</span> calculateScore(task) {</p>
+<p class="pl-4 mb-1">urgency = task.deadline - now();</p>
+<p class="pl-4 mb-1">dopamine = task.interest_level * 1.5;</p>
+<p class="pl-4 mb-1"><span class="text-purple-400">return</span> (urgency + dopamine) / friction;</p>
+<p>}</p>
+</div>
+<p class="text-sm text-text-secondary leading-relaxed">
+                        Logic considers urgency combined with <span class="text-primary font-medium">ADHD context</span> to generate a dynamic execution score.
+                    </p>
+<button class="w-full mt-4 bg-primary text-white font-medium py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors">
+<span>Simulate Logic Flow</span>
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button for API Docs -->
+<div class="fixed bottom-6 right-6 z-40">
+<button class="bg-white text-background-dark h-14 w-14 rounded-full shadow-xl flex items-center justify-center hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-size: 28px;">description</span>
+</button>
+</div>
+</body></html>

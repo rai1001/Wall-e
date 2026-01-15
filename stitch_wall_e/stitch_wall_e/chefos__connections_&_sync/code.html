@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS: Connections &amp; Sync</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600&display=swap');
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#1b140d] dark:text-white overflow-x-hidden min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col max-w-md mx-auto shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between z-10">
+<button class="text-[#1b140d] dark:text-white flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-[#1b140d] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Connections</h2>
+</div>
+<!-- Header Image / Hero Section -->
+<div class="@container w-full px-4 pt-2 pb-6">
+<div class="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-sm bg-[#fcfaf8] dark:bg-white/5">
+<!-- Background Image -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Abstract warm beige 3d gradient waves representing smooth data flow" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAYCcbF_0_Iv7tiajvklaIefxbI4yA4PSAGWbpukl-fwhewP8sAqCbUlIGkwxBaGV5sd03AdtMwcPCu-Flg_3YfY9BVqiuHirk4e1rwHpHPURGN3TU6cAQdumXen8EOlgKfk_0yUjUc0dDzbHjwWmg_114F1eCZqp4ZevRCNnbhyu1Aj3vUlOIE7ld9mho-M902MXgt5DgX0l43uPLmKoK-Ohr-l706Prt_l5LXndH4ry7NUQERIkRKcN5QDK9BwfEc-gade7MpjDzw");'>
+</div>
+<!-- Gradient Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<!-- Content Overlay -->
+<div class="absolute bottom-0 left-0 p-5 w-full">
+<div class="flex items-end justify-between">
+<div class="flex-1 pr-4">
+<h1 class="text-white text-3xl font-bold leading-tight mb-1">Vigilando...</h1>
+<p class="text-white/90 text-sm font-medium">Your schedule is safe with Kal-el.</p>
+</div>
+<!-- Mascot Avatar Circle -->
+<div class="size-16 rounded-full border-4 border-white dark:border-[#221910] overflow-hidden bg-[#fff5eb] shadow-lg shrink-0 flex items-center justify-center relative -mb-2">
+<img class="w-full h-full object-cover" data-alt="Cute robot mascot head named Kal-el with friendly eyes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVvb-c0nNw3e5r59ejQ7Hxbcf1IwKh5ekUzMMgmVNSadM-M7JylL4nyabIeBZNRXxYnO4kraC4-qOnqVtX6BDrp7Qw1RMCZ9_tvmGCIUR2kEq8TKsbb3NY5QNs2spN9scJfed2-QC5KBklA4QP3qtQ8D8sbHMThYdNkEL_lNcDlCNdBWqlBkC5fq1f3DGtXM1YKDRbSS-xsPytHBT5XJvBQDSt4wBe2M4Btr48cCT6BUJGv37GJm4uuvFOTMhtl64581shQ29mj64O"/>
+<div class="absolute bottom-0 right-0 bg-primary p-1 rounded-full text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">search</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex-1 flex flex-col px-4 gap-6 pb-24">
+<!-- Headline -->
+<div class="flex items-center justify-between">
+<h2 class="text-[#1b140d] dark:text-white text-[22px] font-bold leading-tight">Active Accounts</h2>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">2 Synced</span>
+</div>
+<!-- Card: Google Calendar -->
+<div class="bg-white dark:bg-white/5 p-5 rounded-[2rem] shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+<!-- Card Header -->
+<div class="flex items-start justify-between mb-5">
+<div class="flex gap-4">
+<div class="size-12 rounded-full bg-[#f3ede7] dark:bg-white/10 flex items-center justify-center text-[#1b140d] dark:text-white shrink-0">
+<!-- Placeholder for Google Logo -->
+<span class="material-symbols-outlined" style="font-size: 24px;">calendar_month</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#1b140d] dark:text-white text-lg font-bold">Google Calendar</h3>
+<div class="flex items-center gap-1.5 mt-1">
+<div class="flex items-center justify-center bg-primary/10 text-primary rounded-full px-2 py-0.5">
+<span class="material-symbols-outlined mr-1" style="font-size: 14px;">check_circle</span>
+<span class="text-xs font-bold">Synced just now</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Large Toggle Switch (ON State) -->
+<button class="relative w-14 h-8 bg-primary rounded-full transition-colors focus:outline-none shadow-inner group">
+<div class="absolute top-1 left-1 bg-white w-6 h-6 rounded-full shadow-md transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-[#f3ede7] dark:bg-white/10 mb-4"></div>
+<!-- Sub-List Items -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-blue-500 shadow-sm"></div>
+<span class="text-[#1b140d] dark:text-white/80 font-medium">Personal</span>
+</div>
+<span class="material-symbols-outlined text-gray-300 dark:text-gray-600" style="font-size: 20px;">visibility</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-purple-500 shadow-sm"></div>
+<span class="text-[#1b140d] dark:text-white/80 font-medium">Family</span>
+</div>
+<span class="material-symbols-outlined text-gray-300 dark:text-gray-600" style="font-size: 20px;">visibility</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-primary shadow-sm"></div>
+<span class="text-[#1b140d] dark:text-white/80 font-medium">ChefOS Plan</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">visibility</span>
+</div>
+</div>
+</div>
+<!-- Card: Outlook -->
+<div class="bg-white dark:bg-white/5 p-5 rounded-[2rem] shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+<!-- Card Header -->
+<div class="flex items-start justify-between mb-5">
+<div class="flex gap-4">
+<div class="size-12 rounded-full bg-[#f3ede7] dark:bg-white/10 flex items-center justify-center text-[#1b140d] dark:text-white shrink-0">
+<span class="material-symbols-outlined" style="font-size: 24px;">mail</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-[#1b140d] dark:text-white text-lg font-bold">Outlook Work</h3>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="text-gray-500 dark:text-gray-400 text-xs font-medium">Last sync: 10m ago</span>
+</div>
+</div>
+</div>
+<!-- Large Toggle Switch (ON State) -->
+<button class="relative w-14 h-8 bg-primary rounded-full transition-colors focus:outline-none shadow-inner group">
+<div class="absolute top-1 left-1 bg-white w-6 h-6 rounded-full shadow-md transform translate-x-6 transition-transform"></div>
+</button>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-[#f3ede7] dark:bg-white/10 mb-4"></div>
+<!-- Sub-List Items -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-red-500 shadow-sm"></div>
+<span class="text-[#1b140d] dark:text-white/80 font-medium">Meetings</span>
+</div>
+<span class="material-symbols-outlined text-gray-300 dark:text-gray-600" style="font-size: 20px;">visibility</span>
+</div>
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-teal-500 shadow-sm"></div>
+<span class="text-[#1b140d] dark:text-white/80 font-medium">Project X</span>
+</div>
+<span class="material-symbols-outlined text-gray-300 dark:text-gray-600" style="font-size: 20px;">visibility_off</span>
+</div>
+</div>
+</div>
+<!-- Inactive/Add Card Placeholder -->
+<button class="flex items-center justify-center gap-3 w-full py-4 rounded-[2rem] border-2 border-dashed border-gray-300 dark:border-white/20 text-gray-500 dark:text-gray-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors group">
+<div class="size-8 rounded-full bg-gray-200 dark:bg-white/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">add</span>
+</div>
+<span class="font-bold">Connect another account</span>
+</button>
+</div>
+</div>
+</body></html>

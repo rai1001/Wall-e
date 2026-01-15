@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kal-el Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec7f13",
+                        "background-light": "#f8f7f6",
+                        "background-dark": "#221910",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#322416",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#1b140d] dark:text-[#f3ede7] font-display selection:bg-primary/30">
+<div class="relative flex h-full w-full flex-col group/design-root overflow-x-hidden max-w-md mx-auto min-h-screen pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center px-4 py-4 justify-between sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Assistant Settings</h2>
+</div>
+<!-- Hero: Avatar Preview -->
+<div class="@container px-4 py-2">
+<div class="relative w-full aspect-[4/3] bg-surface-light dark:bg-surface-dark rounded-2xl overflow-hidden shadow-sm border border-black/5 dark:border-white/5 group">
+<!-- Background Decoration -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<!-- Main Image -->
+<div class="absolute inset-0 m-4 rounded-xl bg-center bg-no-repeat bg-cover shadow-inner" data-alt="Golden Retriever dog wearing a small chef hat looking encouraging and happy" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBiNQ5isNeB7mkr_Jf7WC_YRK7XvXmni6Xk9szvjh5lNADfZD6Er8BV-1cnc5GkvdTALVn7RlrJv4J4SXaNJaZVObzLm9YAAcFjGlxPlM6kb6vy2yDdKVCZAUQfcTo52f4_T6fFWXo6zpErMf60cjdgEkbUxMIZpph9n-PBN6H0778_Kjkkvc8bOOwjCt0Jwd6cmQN3K809LCi-0kslK9bmDHtOpYUkOM-9JZAbVmUAc2ir1CPN0BvgYoUYqT5IO5XA30T7ED0Vu-dv");'>
+</div>
+<!-- Voice Preview Button -->
+<button class="absolute bottom-8 right-8 flex items-center gap-2 bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg border border-black/5 dark:border-white/10 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">volume_up</span>
+<span class="text-sm font-bold text-primary">Test Voice</span>
+</button>
+</div>
+<p class="text-center text-xs text-stone-500 dark:text-stone-400 mt-3 font-medium">Kal-el is currently feeling <span class="text-primary">Encouraging</span></p>
+</div>
+<!-- Section 1: Personality Vibe -->
+<div class="flex flex-col px-4 pt-6">
+<h2 class="text-xl font-bold leading-tight px-1 pb-4">Kal-el's Vibe</h2>
+<div class="flex p-1.5 bg-surface-light dark:bg-surface-dark rounded-full border border-stone-200 dark:border-stone-800 shadow-sm">
+<!-- Option 1 -->
+<label class="flex-1 relative cursor-pointer group">
+<input class="peer sr-only" name="vibe" type="radio" value="quiet"/>
+<div class="flex h-12 items-center justify-center rounded-full px-3 transition-all duration-300 peer-checked:bg-primary peer-checked:shadow-md hover:bg-black/5 dark:hover:bg-white/5 peer-checked:hover:bg-primary">
+<span class="text-sm font-semibold text-stone-600 dark:text-stone-400 peer-checked:text-white truncate">Quiet</span>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="flex-1 relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="vibe" type="radio" value="encouraging"/>
+<div class="flex h-12 items-center justify-center rounded-full px-3 transition-all duration-300 peer-checked:bg-primary peer-checked:shadow-md hover:bg-black/5 dark:hover:bg-white/5 peer-checked:hover:bg-primary">
+<span class="text-sm font-semibold text-stone-600 dark:text-stone-400 peer-checked:text-white truncate">Encouraging</span>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="flex-1 relative cursor-pointer group">
+<input class="peer sr-only" name="vibe" type="radio" value="high-energy"/>
+<div class="flex h-12 items-center justify-center rounded-full px-3 transition-all duration-300 peer-checked:bg-primary peer-checked:shadow-md hover:bg-black/5 dark:hover:bg-white/5 peer-checked:hover:bg-primary">
+<span class="text-sm font-semibold text-stone-600 dark:text-stone-400 peer-checked:text-white truncate">High Energy</span>
+</div>
+</label>
+</div>
+<p class="text-xs text-stone-500 dark:text-stone-400 px-2 pt-3 leading-relaxed">
+                Controls how often Kal-el speaks up while you are cooking.
+            </p>
+</div>
+<!-- Section 2: Behaviors -->
+<div class="flex flex-col px-4 pt-8">
+<h3 class="text-xl font-bold leading-tight px-1 pb-4">Behaviors</h3>
+<div class="flex flex-col gap-4">
+<!-- Toggle Card: Bark Reminders -->
+<div class="flex items-center justify-between p-5 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-sm border border-stone-100 dark:border-stone-800/50">
+<div class="flex items-center gap-4 flex-1">
+<div class="size-12 rounded-full bg-orange-100 dark:bg-orange-900/30 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">pets</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-base">Bark Reminders</span>
+<span class="text-sm text-stone-500 dark:text-stone-400 leading-tight">Audible alerts for timers</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer ml-3">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-8 bg-stone-200 peer-focus:outline-none rounded-full peer dark:bg-stone-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary shadow-inner"></div>
+</label>
+</div>
+<!-- Toggle Card: Auto-Focus Lock -->
+<div class="flex items-center justify-between p-5 bg-surface-light dark:bg-surface-dark rounded-2xl shadow-sm border border-stone-100 dark:border-stone-800/50">
+<div class="flex items-center gap-4 flex-1">
+<div class="size-12 rounded-full bg-orange-100 dark:bg-orange-900/30 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">lock_clock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-base">Auto-Focus Lock</span>
+<span class="text-sm text-stone-500 dark:text-stone-400 leading-tight">Keep screen awake while cooking</span>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer ml-3">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-14 h-8 bg-stone-200 peer-focus:outline-none rounded-full peer dark:bg-stone-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary shadow-inner"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto">
+<button class="w-full bg-primary hover:bg-orange-600 text-white font-bold h-14 rounded-full shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+<span>Apply Changes</span>
+<span class="material-symbols-outlined text-lg">check</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warm Friendly: Connections</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ee7c2b",
+              "background-light": "#f8f7f6",
+              "background-dark": "#221810",
+              "surface-light": "#ffffff",
+              "text-main": "#1b130d",
+              "text-sub": "#9a6c4c",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            boxShadow: {
+                'soft': '0 4px 20px -2px rgba(238, 124, 43, 0.08)',
+                'card': '0 2px 12px -2px rgba(27, 19, 13, 0.04)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom Toggle Styles for Organic Feel */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #ee7c2b;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #ee7c2b;
+        }
+        
+        /* Smooth transitions */
+        .transition-all-300 {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-main antialiased selection:bg-primary/20">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<div class="flex items-center px-6 pt-8 pb-4 justify-between sticky top-0 z-10 bg-background-light/95 backdrop-blur-sm dark:bg-background-dark/95">
+<button class="flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-black/5 active:scale-95 transition-all-300 text-text-main">
+<span class="material-symbols-outlined text-[28px]">arrow_back</span>
+</button>
+<h1 class="text-text-main text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Your Connected World</h1>
+<div class="size-12"></div> <!-- Spacer for centering -->
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 flex flex-col px-4 pb-24">
+<!-- Section: Connected Accounts -->
+<div class="mt-4">
+<h2 class="text-text-main tracking-tight text-[24px] font-bold leading-tight px-2 text-left pb-4">Connected Accounts</h2>
+<!-- Google Card -->
+<div class="group flex flex-col gap-3 bg-surface-light dark:bg-[#2f221a] p-5 rounded-[2rem] shadow-card mb-4 transition-transform hover:scale-[1.01] duration-300">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-center gap-4">
+<!-- Logo -->
+<div class="relative shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-gray-50 border border-gray-100 overflow-hidden">
+<img alt="Google Logo" class="h-8 w-8 object-contain" data-alt="Google G logo in multicolor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxvstAWh3Z6iSjPfdGTGPQJI7HV8aZ7XHCzlSwmxb1wUwCRtXImMkt_0-nvOFlNdteqmj01IoO4Ei0XGl_CaLiKfo6N_zKeF52IAz4U_jxagslgqE-oHHuUJZKBYgUVEgDtCe5q9kEXqjiQUdoZBEy6c6DmifWdEYVyANDWixs62ZeF5-5G6PbhVcBr0PlHjlPZHu2p3udrgV29-9eBYpvPEYL6J0-y2lT5R47TZyChAjjrYZYw3s2rqQYcAyQwf4A1hh2pv-hqAkW"/>
+</div>
+<!-- Text Info -->
+<div class="flex flex-col justify-center">
+<p class="text-text-main text-lg font-bold leading-tight line-clamp-1">My Personal Life</p>
+<p class="text-text-sub text-sm font-medium leading-normal line-clamp-1">amy.chef@gmail.com</p>
+</div>
+</div>
+<!-- Organic Toggle -->
+<div class="shrink-0">
+<label class="relative flex h-9 w-16 cursor-pointer items-center rounded-full border-none bg-[#f3ece7] dark:bg-white/10 p-1 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors duration-300">
+<input checked="" class="peer invisible absolute" type="checkbox"/>
+<div class="h-7 w-7 rounded-full bg-white shadow-sm transition-all duration-300 peer-checked:translate-x-full"></div>
+</label>
+</div>
+</div>
+<!-- Friendly Status Line -->
+<div class="flex items-center gap-2 px-1 pt-1">
+<span class="material-symbols-outlined text-green-500 text-[20px] bg-green-100 rounded-full p-0.5" style="font-variation-settings: 'FILL' 1, 'wght' 700;">check</span>
+<p class="text-text-sub text-sm font-medium">All caught up! (Synced)</p>
+</div>
+</div>
+<!-- Outlook Card -->
+<div class="group flex flex-col gap-3 bg-surface-light dark:bg-[#2f221a] p-5 rounded-[2rem] shadow-card mb-4 transition-transform hover:scale-[1.01] duration-300">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-center gap-4">
+<!-- Logo -->
+<div class="relative shrink-0 flex items-center justify-center h-16 w-16 rounded-full bg-blue-50 border border-blue-100 overflow-hidden">
+<div class="bg-blue-600 h-8 w-8 rounded flex items-center justify-center text-white font-bold text-lg" data-alt="Abstract blue square representing Outlook">O</div>
+</div>
+<!-- Text Info -->
+<div class="flex flex-col justify-center">
+<p class="text-text-main text-lg font-bold leading-tight line-clamp-1">Work Stuff</p>
+<p class="text-text-sub text-sm font-medium leading-normal line-clamp-1">amy@chefos.com</p>
+</div>
+</div>
+<!-- Organic Toggle -->
+<div class="shrink-0">
+<label class="relative flex h-9 w-16 cursor-pointer items-center rounded-full border-none bg-[#f3ece7] dark:bg-white/10 p-1 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors duration-300">
+<input checked="" class="peer invisible absolute" type="checkbox"/>
+<div class="h-7 w-7 rounded-full bg-white shadow-sm transition-all duration-300 peer-checked:translate-x-full"></div>
+</label>
+</div>
+</div>
+<!-- Friendly Status Line -->
+<div class="flex items-center gap-2 px-1 pt-1">
+<span class="material-symbols-outlined text-primary text-[20px] bg-orange-100 rounded-full p-0.5 animate-pulse">schedule</span>
+<p class="text-text-sub text-sm font-medium">Just a sec, syncing...</p>
+</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-4"></div>
+<!-- Section: Calendar Colors -->
+<div class="mt-4">
+<h2 class="text-text-main tracking-tight text-[24px] font-bold leading-tight px-2 text-left pb-4">Calendar Colors</h2>
+<div class="bg-surface-light dark:bg-[#2f221a] rounded-[2.5rem] p-2 shadow-card">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-background-light/50 dark:hover:bg-white/5 rounded-[2rem] transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-[#FFD1DC] flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#d48ba0] text-[20px]">cake</span>
+</div>
+<span class="text-text-main text-base font-semibold">Birthdays</span>
+</div>
+<span class="material-symbols-outlined text-text-sub/30">chevron_right</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-background-light/50 dark:hover:bg-white/5 rounded-[2rem] transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-[#D1E8FF] flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#8bbad4] text-[20px]">groups</span>
+</div>
+<span class="text-text-main text-base font-semibold">Meetings</span>
+</div>
+<span class="material-symbols-outlined text-text-sub/30">chevron_right</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-4 hover:bg-background-light/50 dark:hover:bg-white/5 rounded-[2rem] transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-[#E8FFD1] flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[#a0d48b] text-[20px]">fitness_center</span>
+</div>
+<span class="text-text-main text-base font-semibold">Health &amp; Habits</span>
+</div>
+<span class="material-symbols-outlined text-text-sub/30">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Action Button Area -->
+<div class="fixed bottom-6 left-0 right-0 flex justify-center px-6 z-20 pointer-events-none">
+<button class="pointer-events-auto flex items-center gap-3 bg-primary hover:bg-primary/90 text-white font-bold text-lg px-8 py-4 rounded-full shadow-soft hover:shadow-lg hover:-translate-y-1 transition-all duration-300 w-full max-w-md justify-center">
+<span class="material-symbols-outlined">add_circle</span>
+<span>Connect Another Account</span>
+</button>
+</div>
+<!-- Gradient overlay at bottom for smooth scroll fade -->
+<div class="fixed bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background-light to-transparent dark:from-background-dark pointer-events-none"></div>
+</div>
+</body></html>

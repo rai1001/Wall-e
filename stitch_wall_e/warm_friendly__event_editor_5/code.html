@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kal-el: Task Completion Celebration</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "primary": "#6B8E78","primary-dark": "#4A6354",
+                "accent": "#ec7f13","background-light": "#EEF2F0","background-dark": "#1A211E",
+                "surface-light": "#fffdfa",
+                "surface-dark": "#2d241b",
+                "input-bg": "#E1E8E4", 
+                "input-bg-dark": "#2C3630",
+                "terracotta": "#D97757",
+                "sage": "#8fa89b",
+                },
+                fontFamily: {
+                "display": ["Newsreader", "serif"],
+                "sans": ["Noto Sans", "sans-serif"],
+                },
+                borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                boxShadow: {
+                    'soft': '0 10px 40px -10px rgba(107, 142, 120, 0.15)',
+                    'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.03)',
+                    'float': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                }
+            },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        }::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5d0;
+            border-radius: 10px;
+        }@keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        .pulse-soft {
+            animation: gentle-pulse 3s ease-in-out infinite;
+        }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#dce3df] dark:bg-gray-900 font-display text-[#2d3b32] dark:text-[#f3ede7] antialiased overflow-hidden">
+<div class="fixed inset-0 z-0 opacity-20 pointer-events-none blur-sm" data-alt="blurred home interior background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbg7ig-msvDnYdCLoLfSKK34C6X9UgJudzowESPVn4w2tpQsI2dB-25P3QtF5Bvjl2RvdQWSBbjeyb6kn8PTxQvGYBdUwTix_ndTtrEtZQ-IB0b6zzvtQDviyKwfO0gKTfV0xsLTXF65wojqFNdaI3Qw659241vX0W-Qd618g9dn38iWLmsMuTVUjeIh-9w4x9YUD_uD8SEx_th8dIiwsXIC74POwHRNkG8YNhw5qbaDL0SC5L-IH_xpPu2lJbgllg_3cIxF2PF5wo'); background-size: cover; background-position: center;"></div>
+<div class="relative z-10 flex min-h-screen w-full flex-col items-center justify-center p-4 backdrop-blur-md bg-[#6B8E78]/10 dark:bg-black/40">
+<div class="w-full max-w-[420px] bg-background-light dark:bg-background-dark rounded-[2.5rem] shadow-soft overflow-hidden relative flex flex-col h-[85vh] border-4 border-white/50 dark:border-white/5">
+<div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute top-[15%] left-[10%] w-3 h-3 rounded-full bg-terracotta opacity-40"></div>
+<div class="absolute top-[40%] right-[15%] w-2 h-2 rounded-full bg-terracotta opacity-50"></div>
+<div class="absolute bottom-[30%] left-[20%] w-4 h-1 bg-terracotta rotate-45 opacity-40"></div>
+<div class="absolute top-[10%] right-[30%] w-3 h-3 bg-terracotta/60 rounded-sm rotate-12 opacity-30"></div>
+<div class="absolute top-[25%] right-[10%] w-3 h-3 rounded-full bg-primary opacity-40"></div>
+<div class="absolute top-[50%] left-[8%] w-2 h-4 bg-primary -rotate-12 opacity-30"></div>
+<div class="absolute bottom-[40%] right-[25%] w-2 h-2 rounded-full bg-primary opacity-50"></div>
+<div class="absolute top-[20%] left-[30%] w-2 h-2 bg-primary rounded-full opacity-40"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+</div>
+<div class="pt-8 px-6 pb-2 z-10 relative flex justify-end items-start opacity-40">
+<button class="p-2 hover:bg-black/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-[24px]">close</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center px-8 relative z-10 w-full mb-12">
+<div class="relative mb-10">
+<div class="w-48 h-48 rounded-full border-[6px] border-white dark:border-white/10 bg-[#FFF8E1] dark:bg-[#2C3630] p-4 shadow-float mx-auto pulse-soft z-20 relative flex items-center justify-center">
+<img class="w-full h-full object-contain rounded-full transform hover:scale-105 transition-transform duration-500" data-alt="Friendly pug illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxF3MNz3CHX8oYAdJBGlOo2rgnHhHW_FYCqhcxn2PKnTBXjXewB0RT-Oms_e9McJZyixQ4vhADCnGLleTfeFxeEPzFPJTIxYVCIY_veeYe8cR_4qBy5nMEfxOxnE9FhEqxKWPDtFVBBaYguan_5mum8_0hM6-0ggBRAXDve9uwaFEg4PuAIpqs3P--fDGbx8uzol4ZuhCZflQsCSE8OZSuYHcTG-gRKbwrhMZA3k-c0bJA3hVChoG2u0nh9MYVRoS2jmUQLkn7ZrCJ"/>
+<div class="absolute -top-6 -right-2 transform rotate-[15deg] z-30 filter drop-shadow-md">
+<div class="w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[44px] border-b-[#E07A5F]"></div>
+<div class="absolute -top-2 -left-2 w-4 h-4 rounded-full bg-white shadow-sm animate-bounce"></div>
+<div class="absolute top-6 left-[-6px] w-3 h-3 rounded-full bg-[#FFD700] opacity-50"></div>
+</div>
+</div>
+<div class="absolute inset-0 bg-accent/20 blur-2xl rounded-full transform scale-125 z-10"></div>
+</div>
+<div class="relative w-full text-center z-10 flex flex-col items-center gap-3">
+<h2 class="text-4xl font-display font-medium tracking-tight text-[#2d3b32] dark:text-[#f3ede7] leading-tight drop-shadow-sm">
+                        ¡Buen trabajo!
+                    </h2>
+<p class="text-xl font-sans text-primary-dark dark:text-sage opacity-90">
+                        Kal-el está orgulloso
+                    </p>
+</div>
+</div>
+<div class="w-full px-6 pb-10 z-20">
+<button class="w-full h-20 rounded-[2rem] bg-[#eecab6] dark:bg-[#5c4033] text-[#7a4033] dark:text-[#eecab6] font-sans font-bold text-xl shadow-lg shadow-terracotta/10 hover:shadow-terracotta/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 group">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[24px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+
+</body></html>

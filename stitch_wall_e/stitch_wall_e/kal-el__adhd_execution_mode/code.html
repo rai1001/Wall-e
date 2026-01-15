@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kal-el: ADHD Execution Mode</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#eead2b",
+              "background-light": "#f8f7f6",
+              "background-dark": "#221c10",
+              "sage": "#e0e8d9", // Custom sage for this focus mode
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            boxShadow: {
+                'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                'card': '0 10px 30px -5px rgba(27, 23, 13, 0.08)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom utilities for the focus mode specific appearance */
+        .bg-sage-gradient {
+            background: linear-gradient(180deg, #e4eadf 0%, #d8e0d0 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-sage-gradient min-h-screen w-full flex flex-col font-display text-[#1b170d] overflow-hidden selection:bg-primary selection:text-white">
+<!-- Focus Mode Container -->
+<main class="relative flex flex-col flex-grow w-full max-w-md mx-auto h-full p-6">
+<!-- Top Spacer for balance -->
+<div class="flex-grow-[1]"></div>
+<!-- Character & Encouragement Section -->
+<div class="flex flex-col items-center gap-5 mb-8 relative z-10">
+<!-- Speech Bubble -->
+<div class="relative bg-white px-6 py-4 rounded-lg shadow-soft animate-fade-in origin-bottom transform transition-all hover:scale-[1.02]">
+<p class="text-center font-bold text-lg leading-snug text-[#1b170d]">
+                    ¡Tú puedes! Primero llena la regadera
+                </p>
+<!-- Tail for bubble -->
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-5 h-5 bg-white rotate-45 transform"></div>
+</div>
+<!-- Avatar -->
+<div class="h-24 w-24 rounded-full border-4 border-white shadow-soft overflow-hidden bg-[#fcfaf8]">
+<div class="w-full h-full bg-center bg-cover" data-alt="Illustration of Kal-el the pug looking friendly and encouraging" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBgoVxAJFsoun066eqR7li-fE1tQYQTxJc1sMLMlA4c_zsiYRDJrYpa6yPqRjDzv-eksvhmgyKThWyzHk4UpHTXHaMFoVVZt8Brpbc3rkEf9dRwIg1kxQ81Y9ftQV3FVIW60mC54KBWBHUe_8yC7EKyR5PM7PBMnxjgh4GgfFAFGNanRrlvsu_7Au7v_F_0VO4_HG19O1uRyWXdNfnAWgnD7SmJxHIYYv9IMqPLCYurq88HK-61E8kq5Q6J67t9EJ9kC434VD0mi1bC");'>
+</div>
+</div>
+</div>
+<!-- Main Task Card -->
+<!-- Modified Card Component for Large Focus State -->
+<div class="w-full relative group perspective-1000 mb-8">
+<div class="w-full bg-[#fcfaf8] rounded-xl shadow-card p-4 flex flex-col gap-4 transform transition-all duration-300 hover:-translate-y-1">
+<!-- Card Image -->
+<div class="w-full aspect-[4/3] rounded-lg overflow-hidden relative bg-gray-100">
+<div class="w-full h-full bg-center bg-cover transform hover:scale-105 transition-transform duration-700" data-alt="Green watering can pouring water onto lush green indoor plants" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBL30AmUwtFrMSj8njJlaPsMfvnxq717kXGdan3S-LecJXINL9AlCtMeSj4oMXSxPCdZkkpmAf5SMkK97PAAmyELxniyRZsbMAGf5Vt1LMjjKh0BkBPFP9qLrFskQ8lFskXg4chRCav6VwRcETvFVb2I9tXqd6GhbGB4zouJhIhOV2QqRDHlmMxO_N3PoS3Dgv81HTBrkwQlkwzh2K83dwFKNREyTiMKDpET1ZI_0F3O_2tWIE8nhvraIySMxJb3rTwWdJDp66cWA8P");'>
+</div>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">water_drop</span>
+<span class="text-xs font-bold text-[#1b170d] uppercase tracking-wide">Current Task</span>
+</div>
+</div>
+<!-- Card Content -->
+<div class="flex flex-col items-center text-center pb-2 px-2">
+<h1 class="text-3xl font-extrabold text-[#1b170d] mb-1 tracking-tight">Water Plants</h1>
+<div class="flex items-center gap-2 text-gray-500">
+<span class="material-symbols-outlined text-[20px]">timer</span>
+<span class="text-sm font-medium">~5 min</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Spacer -->
+<div class="flex-grow-[2]"></div>
+<!-- Action Buttons & Parking Area -->
+<div class="flex flex-col gap-3 w-full pb-4 z-20">
+<!-- Primary 'Done' Button -->
+<button class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-16 bg-primary text-[#1b170d] text-xl font-bold shadow-[0_4px_0_0_#ca8a04] active:shadow-none active:translate-y-[4px] transition-all">
+<div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined mr-2 text-[28px] font-bold">check</span>
+<span>¡Hecho!</span>
+</button>
+<!-- Secondary 'Stuck' Button -->
+<button class="flex w-full cursor-pointer items-center justify-center rounded-full h-12 bg-[#fcfaf8]/60 hover:bg-[#fcfaf8] text-[#1b170d]/70 hover:text-[#1b170d] text-sm font-bold transition-colors border border-transparent hover:border-white/50">
+<span>Me he atascado</span>
+</button>
+<!-- Parking Input -->
+<div class="mt-4 relative w-full">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[#1b170d]/40 text-[20px]">lightbulb</span>
+</div>
+<input class="block w-full rounded-lg border-0 bg-white/40 py-3 pl-11 pr-4 text-sm text-[#1b170d] placeholder:text-[#1b170d]/40 focus:ring-2 focus:ring-primary focus:bg-white/80 transition-all shadow-sm backdrop-blur-sm" placeholder="Parking... (distracting thoughts)" type="text"/>
+</div>
+</div>
+</main>
+</body></html>

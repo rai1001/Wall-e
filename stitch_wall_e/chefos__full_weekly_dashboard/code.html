@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChefOS Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ec7f13",
+              "background-light": "#FFFEFA", 
+              "background-dark": "#221910",
+              "sidebar-bg": "#FFFBF2",
+              "terracotta": "#E09F87",
+              "terracotta-text": "#4A2619",
+              "sage": "#B5C9AA",
+              "sage-text": "#2F3E28",
+              "text-main": "#1b140d",
+              "text-muted": "#9a734c",
+            },
+            fontFamily: {
+              "sans": ["Inter", "sans-serif"],
+              "serif": ["Fraunces", "serif"],
+              "display": ["Inter", "sans-serif"] 
+            },
+            borderRadius: {
+              "DEFAULT": "1rem", 
+              "lg": "1.5rem", 
+              "xl": "2rem", 
+              "2xl": "1.5rem",
+              "3xl": "1.75rem",
+              "full": "9999px"
+            },
+            boxShadow: {
+                "soft": "0 10px 40px -10px rgba(236, 127, 19, 0.08)",
+                "card": "0 4px 12px rgba(27, 20, 13, 0.04)"
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFEFA;
+        }
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Fraunces', serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light text-text-main h-full min-h-screen overflow-hidden">
+<div class="relative flex h-full min-h-screen w-full flex-row overflow-hidden">
+<!-- Sidebar / Drawer (Responsive: Hidden on mobile by default usually, but we will make it a slide-out drawer pattern) -->
+<!-- For visualization purposes in this specific "Phone" request, we will render the sidebar as a hidden drawer that can be toggled. 
+         However, to showcase the "Left sidebar" requirement from the prompt in a single page view, 
+         I will simulate the mobile view where the content is dominant. -->
+<div class="fixed inset-y-0 left-0 z-50 w-72 bg-sidebar-bg transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl lg:relative lg:translate-x-0 lg:shadow-none border-r border-[#f0ebe0] hidden lg:flex flex-col" id="drawer">
+<div class="flex flex-col h-full p-6">
+<!-- Logo -->
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant_menu</span>
+</div>
+<p class="text-2xl font-bold font-serif text-text-main tracking-tight">ChefOS</p>
+</div>
+<!-- User Status -->
+<div class="mb-8 p-3 bg-white rounded-full shadow-card flex items-center gap-3 border border-[#f0ebe0]">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 shrink-0" data-alt="User avatar smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTwuh5Opl1AxEmmiuELLuHEy8lokVWaPxnCUE8lYs22hN3nnCwiedjk84j9mkBgoU8AyNDgEQSUVpnioTGGro1O7q8_kpl_cygq07l05OnKBpRtewMgDFSAuZNC2jZm-4qZrZcCy-La1sVPur7V1UOfjTHTokAgFlT9L8yvf981lSsWgi3UOe6wtzqHro8f9JYtYoBbyEk_FRRzlNMqJytCh3NZ3RwtagyylvdkLn6FB97Gj3NFlWzzB5kFFB5uODDdleJ7gdZ1UYH");'>
+</div>
+<div class="flex flex-col overflow-hidden">
+<p class="text-sm font-bold text-text-main truncate">Kal-el</p>
+<p class="text-xs text-text-muted truncate">Feeling productive!</p>
+</div>
+</div>
+<!-- Navigation -->
+<ul class="flex flex-col gap-2 flex-1">
+<li>
+<a class="flex h-12 items-center gap-4 rounded-full px-4 bg-[#f3ede7] text-text-main" href="#">
+<span class="material-symbols-outlined filled">dashboard</span>
+<span class="font-medium text-base">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex h-12 items-center gap-4 rounded-full px-4 hover:bg-[#f3ede7]/50 text-text-muted hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-medium text-base">Recipes</span>
+</a>
+</li>
+<li>
+<a class="flex h-12 items-center gap-4 rounded-full px-4 hover:bg-[#f3ede7]/50 text-text-muted hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-medium text-base">Groceries</span>
+</a>
+</li>
+<li>
+<a class="flex h-12 items-center gap-4 rounded-full px-4 hover:bg-[#f3ede7]/50 text-text-muted hover:text-text-main transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-base">Settings</span>
+</a>
+</li>
+</ul>
+<!-- Logout/Bottom -->
+<div class="mt-auto pt-4 border-t border-[#f0ebe0]">
+<a class="flex h-12 items-center gap-4 rounded-full px-4 text-text-muted hover:text-text-main" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium text-base">Log Out</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background-light relative">
+<!-- Mobile Header (Visible on phone) -->
+<header class="flex items-center justify-between p-5 pb-2 bg-background-light shrink-0 z-20">
+<!-- Left: Menu & Avatar (Mobile only usually, but good for design context) -->
+<div class="flex items-center gap-3">
+<button class="lg:hidden p-2 -ml-2 text-text-main rounded-full hover:bg-black/5">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="lg:hidden bg-center bg-no-repeat bg-cover rounded-full size-10 shadow-sm" data-alt="User avatar mobile" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7pxNjSJoqv1rfCmeXaVgooFcnpfcEbjYPJWeV2FrnOnRVN0oY6hKf_UZYU-FqWW_cgM01cEjAH06pCv8MJXbvhRtIEpUAiOW4TauTGzW25zlwVaMqCU3UJsfRQ0IV7SjsNmffdQm-Bz-6bsUhz8_mNSoujfbaQYNxkbw2kiYyORnurLS-iKfWFtwwFyjzS9stVeGrYtJA1jIT3iqYYZli05RJhBP3znDb3GO8lvPZHtT0SF1zvB-Znd_UCAe7GUw67vLvTSCM1EFG");'>
+</div>
+</div>
+<!-- Center: Date (Responsive placement) -->
+<h2 class="text-text-main text-xl font-bold font-serif leading-tight tracking-tight flex-1 lg:text-left lg:px-4 text-center">October 2023</h2>
+<!-- Right: Focus Button -->
+<div class="flex items-center justify-end">
+<button class="bg-primary text-white px-5 py-2.5 rounded-full shadow-soft hover:shadow-lg hover:bg-primary/90 transition-all flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span class="font-bold text-sm tracking-wide">Focus</span>
+</button>
+</div>
+</header>
+<!-- Weekly Calendar Scroller -->
+<div class="pt-2 pb-4 shrink-0 bg-background-light z-10">
+<div class="flex overflow-x-auto hide-scrollbar px-5 gap-3 py-2 snap-x">
+<!-- Active Day -->
+<div class="snap-start flex flex-col items-center justify-center min-w-[72px] h-[90px] bg-primary text-white rounded-[2rem] shadow-lg shadow-primary/20 cursor-pointer transform scale-105 transition-transform">
+<p class="text-xs font-medium opacity-80 mb-1">Mon</p>
+<p class="text-2xl font-bold font-serif">12</p>
+<div class="size-1.5 bg-white rounded-full mt-1"></div>
+</div>
+<!-- Inactive Days -->
+<div class="snap-start flex flex-col items-center justify-center min-w-[72px] h-[90px] bg-white border border-[#e7dbcf]/50 text-text-muted rounded-[2rem] cursor-pointer hover:border-primary/30 transition-colors">
+<p class="text-xs font-medium opacity-70 mb-1">Tue</p>
+<p class="text-2xl font-bold font-serif text-text-main">13</p>
+</div>
+<div class="snap-start flex flex-col items-center justify-center min-w-[72px] h-[90px] bg-white border border-[#e7dbcf]/50 text-text-muted rounded-[2rem] cursor-pointer hover:border-primary/30 transition-colors">
+<p class="text-xs font-medium opacity-70 mb-1">Wed</p>
+<p class="text-2xl font-bold font-serif text-text-main">14</p>
+</div>
+<div class="snap-start flex flex-col items-center justify-center min-w-[72px] h-[90px] bg-white border border-[#e7dbcf]/50 text-text-muted rounded-[2rem] cursor-pointer hover:border-primary/30 transition-colors">
+<p class="text-xs font-medium opacity-70 mb-1">Thu</p>
+<p class="text-2xl font-bold font-serif text-text-main">15</p>
+</div>
+<div class="snap-start flex flex-col items-center justify-center min-w-[72px] h-[90px] bg-white border border-[#e7dbcf]/50 text-text-muted rounded-[2rem] cursor-pointer hover:border-primary/30 transition-colors">
+<p class="text-xs font-medium opacity-70 mb-1">Fri</p>
+<p class="text-2xl font-bold font-serif text-text-main">16</p>
+</div>
+<div class="snap-start flex flex-col items-center justify-center min-w-[72px] h-[90px] bg-white border border-[#e7dbcf]/50 text-text-muted rounded-[2rem] cursor-pointer hover:border-primary/30 transition-colors">
+<p class="text-xs font-medium opacity-70 mb-1">Sat</p>
+<p class="text-2xl font-bold font-serif text-text-main">17</p>
+</div>
+</div>
+</div>
+<!-- Scrollable Timeline Area -->
+<div class="flex-1 overflow-y-auto px-5 pb-24 hide-scrollbar">
+<!-- 09:00 AM Slot -->
+<div class="flex gap-4 mb-6 group">
+<div class="flex flex-col items-center pt-2 w-12 shrink-0">
+<span class="text-sm font-bold text-text-main">09:00</span>
+<span class="text-xs text-text-muted">AM</span>
+<div class="w-px h-full bg-[#e7dbcf] mt-2 group-last:hidden"></div>
+</div>
+<!-- Work Card -->
+<div class="flex-1 relative">
+<div class="bg-terracotta rounded-3xl p-5 shadow-card text-terracotta-text relative overflow-hidden group/card hover:shadow-md transition-all">
+<!-- Decorative circle -->
+<div class="absolute -right-4 -top-4 size-24 bg-white/10 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/10 text-xs font-bold backdrop-blur-sm">
+<span class="size-2 rounded-full bg-terracotta-text"></span>
+                                Work
+                            </span>
+<span class="text-xs font-semibold opacity-80">2h</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex-1">
+<h3 class="text-lg font-bold font-serif leading-tight mb-1">Menu Planning</h3>
+<p class="text-sm opacity-90 font-medium">Deep Work • Review Fall Ingredients</p>
+</div>
+<div class="size-12 rounded-2xl bg-black/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">restaurant</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 11:00 AM Slot (Gap / Empty) -->
+<div class="flex gap-4 mb-6 group h-12">
+<div class="flex flex-col items-center pt-1 w-12 shrink-0">
+<span class="text-sm font-medium text-text-muted">11:00</span>
+<div class="w-px h-full bg-[#e7dbcf] mt-2"></div>
+</div>
+<div class="flex-1 flex items-center">
+<div class="h-px w-full bg-[#e7dbcf]/50 border-dashed border-t border-[#e7dbcf]"></div>
+</div>
+</div>
+<!-- 12:00 PM Slot -->
+<div class="flex gap-4 mb-6 group">
+<div class="flex flex-col items-center pt-2 w-12 shrink-0">
+<span class="text-sm font-bold text-text-main">12:00</span>
+<span class="text-xs text-text-muted">PM</span>
+<div class="w-px h-full bg-[#e7dbcf] mt-2 group-last:hidden"></div>
+</div>
+<!-- Work Card Compact -->
+<div class="flex-1">
+<div class="bg-white border border-[#e7dbcf] rounded-3xl p-4 shadow-sm flex items-center justify-between">
+<div class="flex flex-col">
+<h3 class="text-base font-bold font-serif text-text-main">Lunch Break</h3>
+<p class="text-sm text-text-muted">Quick healthy meal</p>
+</div>
+<div class="bg-primary/10 text-primary p-2 rounded-full">
+<span class="material-symbols-outlined text-[20px]">self_improvement</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 02:00 PM Slot -->
+<div class="flex gap-4 mb-6 group">
+<div class="flex flex-col items-center pt-2 w-12 shrink-0">
+<span class="text-sm font-bold text-text-main">02:00</span>
+<span class="text-xs text-text-muted">PM</span>
+<div class="w-px h-full bg-[#e7dbcf] mt-2 group-last:hidden"></div>
+</div>
+<!-- Work Card -->
+<div class="flex-1 relative">
+<div class="bg-terracotta/80 rounded-3xl p-5 shadow-card text-terracotta-text relative overflow-hidden">
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/10 text-xs font-bold backdrop-blur-sm">
+<span class="size-2 rounded-full bg-terracotta-text"></span>
+                                Work
+                            </span>
+<span class="text-xs font-semibold opacity-80">1h</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="flex-1">
+<h3 class="text-lg font-bold font-serif leading-tight mb-1">Vendor Call</h3>
+<p class="text-sm opacity-90 font-medium">Discuss pricing for Q4</p>
+</div>
+</div>
+<!-- Avatars overlapping -->
+<div class="flex -space-x-2 mt-3 pl-1">
+<div class="size-8 rounded-full border-2 border-terracotta bg-gray-200 bg-cover bg-center" data-alt="Colleague Avatar 1" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeOOPMHQoJUqx0lDsrX0ZxWv1kJc9J2wKAIdaoFNfpbFrUv3_VDLggyuFoVFmnwuRsT93Nlk7MKpOhHOKrM24WX4oJFaFj0R1hAsBx7luE9iI-Mlr0WV7OyoalUqZrpvYIuwXdW7GAu-n_7ZU4O4pu9qyCPFk_KvS6Umefr4fJgrZfmXzsK7bufnyjVbYX2VhsI8MJd7dmRqXDnRpu01bQ2Qrc2Vr10d-VtLwItbI8IfmHN5LD85XQAhwDJtMEjgsxbFZHwsNA1B-X");'></div>
+<div class="size-8 rounded-full border-2 border-terracotta bg-gray-200 bg-cover bg-center" data-alt="Colleague Avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtOoanmcbmqGIi1vNp77Qpu5gs8FT2PAtVaWPwDfBPq9UefVfFkJ96wjgrEBrFaw3qeybcoSDJgNFhUPu7Rd2CJlmTL7m0pzqGSLqIixSwTecCSKs8mMwn1UxH-JNr3_Ec794MOgDrCmhs4nOV-4CPG2QWDprVYbOLxjmitnSWk9Nfw6TtCHG3uRxycr2__jRfIGXyt58OWKRJSbVIXgLf-AphGMOMY8-oZill3xQbPOyNRu_9I4Nmy04cc4gYcPEtIMdMmsdXcOH7");'></div>
+</div>
+</div>
+</div>
+</div>
+<!-- 06:00 PM Slot -->
+<div class="flex gap-4 mb-6 group">
+<div class="flex flex-col items-center pt-2 w-12 shrink-0">
+<span class="text-sm font-bold text-text-main">06:00</span>
+<span class="text-xs text-text-muted">PM</span>
+<div class="w-px h-full bg-[#e7dbcf] mt-2 group-last:hidden"></div>
+</div>
+<!-- Home Card -->
+<div class="flex-1 relative">
+<div class="bg-sage rounded-3xl p-5 shadow-card text-sage-text relative overflow-hidden">
+<!-- Decorative circle -->
+<div class="absolute -left-4 -bottom-4 size-32 bg-white/20 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/5 text-xs font-bold backdrop-blur-sm">
+<span class="size-2 rounded-full bg-sage-text"></span>
+                                Home
+                            </span>
+<span class="text-xs font-semibold opacity-80">1.5h</span>
+</div>
+<div class="flex gap-4 items-center relative z-10">
+<div class="flex-1">
+<h3 class="text-lg font-bold font-serif leading-tight mb-1">Family Dinner Prep</h3>
+<p class="text-sm opacity-90 font-medium">Pasta Night! 🍝</p>
+</div>
+</div>
+<!-- Recipe Image Mini -->
+<div class="mt-4 h-24 w-full rounded-2xl bg-cover bg-center shadow-inner" data-alt="Fresh pasta ingredients on a wooden table" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBvxsrzRJ_jZYv9zhNFm4oDKiH5abV86bOFIgOvdf7Fc2mQDNn2A1vjefbEpVOuFtWkW_RIIogPwk1bLGsyLyArNGipgKZZXyhTx5vmQrat8xV-GgvRuSaTwbn6LVi4f15XIiOWtZwWnaDab7eWFiPiPPCuPrCAxhwGfCw9a32yccUsQ9JLl3Dl3vNPgIIXQVPWoaGTGe-vDoTHe5YIKcH44aOuPd2QpM-k_u956VDaDePu70gvk9AGPLYo0uaz9BlNLVpGGuFdIjwm");'>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for FAB -->
+<div class="h-20"></div>
+</div>
+<!-- Floating Action Button -->
+<div class="absolute bottom-6 right-6 z-30">
+<button class="size-16 bg-primary text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center hover:scale-105 transition-transform active:scale-95 group">
+<span class="material-symbols-outlined text-[32px] group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+</div>
+<!-- Bottom Fade Gradient (for aesthetics over content) -->
+<div class="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-background-light to-transparent pointer-events-none z-20"></div>
+</div>
+</div>
+</body></html>

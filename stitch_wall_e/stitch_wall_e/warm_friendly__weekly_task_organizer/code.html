@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weekly Task Organizer</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#46ec13",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#142210",
+                        "warm-bg": "#F9F7F2", // Custom warm background
+                        "work-bg": "#eef7eb",
+                        "home-bg": "#fff5eb",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-warm-bg text-[#142210] dark:bg-background-dark dark:text-white font-display h-screen flex flex-col overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex items-center px-6 pt-12 pb-4 justify-between shrink-0 bg-warm-bg dark:bg-background-dark z-10">
+<div class="flex size-10 items-center justify-center rounded-full hover:bg-black/5 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</div>
+<div class="flex flex-col items-center">
+<h2 class="text-xl font-bold leading-tight tracking-tight">Week of Oct 24</h2>
+<span class="text-xs font-body text-gray-500 uppercase tracking-widest mt-0.5">ChefOS Planner</span>
+</div>
+<div class="flex size-10 items-center justify-center">
+<button class="text-primary text-base font-bold hover:opacity-80 transition-opacity">Edit</button>
+</div>
+</header>
+<!-- Scrollable Content Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar flex flex-col">
+<!-- Weekly Balance Section -->
+<section class="px-6 py-2 shrink-0">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<p class="text-lg font-semibold">Weekly Balance</p>
+<p class="text-primary text-sm font-bold font-body">85%</p>
+</div>
+<div class="relative h-3 w-full rounded-full bg-[#e6e4dd] dark:bg-gray-800 overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary rounded-full" style="width: 65%;"></div>
+</div>
+<p class="text-gray-500 text-xs font-body text-right">Work / Home Ratio</p>
+</div>
+</section>
+<!-- Split Agenda View -->
+<section class="flex-1 px-4 py-4 grid grid-cols-2 gap-4 h-full min-h-0">
+<!-- Work Column (Left) -->
+<div class="flex flex-col gap-3 min-h-0">
+<div class="flex items-center gap-2 px-1 mb-1">
+<span class="material-symbols-outlined text-gray-400 text-lg">work</span>
+<h3 class="text-lg font-bold italic text-gray-800 dark:text-gray-200">Work</h3>
+</div>
+<!-- Scrollable list within column -->
+<div class="flex-1 overflow-y-auto no-scrollbar flex flex-col gap-3 pb-20">
+<!-- Task Card 1 -->
+<div class="p-3 rounded-xl bg-work-bg dark:bg-green-900/20 border border-green-100 dark:border-green-800/30 flex flex-col gap-2 shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<span class="text-base font-semibold leading-tight line-clamp-2">Review Q3 Budget</span>
+<div class="size-5 shrink-0 rounded-full border-2 border-primary/40 flex items-center justify-center cursor-pointer hover:bg-primary/10"></div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-white/60 dark:bg-white/10 text-[10px] font-body font-bold text-green-700 dark:text-green-300">1h</span>
+<span class="material-symbols-outlined text-gray-400 text-sm" title="Synced">sync</span>
+</div>
+</div>
+<!-- Task Card 2 -->
+<div class="p-3 rounded-xl bg-work-bg dark:bg-green-900/20 border border-green-100 dark:border-green-800/30 flex flex-col gap-2 shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<span class="text-base font-semibold leading-tight">Team Sync</span>
+<div class="size-5 shrink-0 rounded-full border-2 border-primary/40 flex items-center justify-center cursor-pointer hover:bg-primary/10"></div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-white/60 dark:bg-white/10 text-[10px] font-body font-bold text-green-700 dark:text-green-300">30m</span>
+<span class="material-symbols-outlined text-primary text-sm" title="Synced">event_available</span>
+</div>
+</div>
+<!-- Task Card 3 -->
+<div class="p-3 rounded-xl bg-work-bg dark:bg-green-900/20 border border-green-100 dark:border-green-800/30 flex flex-col gap-2 shadow-sm opacity-60">
+<div class="flex items-start justify-between gap-2">
+<span class="text-base font-semibold leading-tight line-through text-gray-500">Email Client</span>
+<div class="size-5 shrink-0 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-white/60 dark:bg-white/10 text-[10px] font-body font-bold text-gray-500">15m</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Home Column (Right) -->
+<div class="flex flex-col gap-3 min-h-0">
+<div class="flex items-center gap-2 px-1 mb-1">
+<span class="material-symbols-outlined text-gray-400 text-lg">home</span>
+<h3 class="text-lg font-bold italic text-gray-800 dark:text-gray-200">Home</h3>
+</div>
+<!-- Scrollable list within column -->
+<div class="flex-1 overflow-y-auto no-scrollbar flex flex-col gap-3 pb-20">
+<!-- Task Card 1 -->
+<div class="p-3 rounded-xl bg-home-bg dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/30 flex flex-col gap-2 shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<span class="text-base font-semibold leading-tight">Grocery Run</span>
+<div class="size-5 shrink-0 rounded-full border-2 border-orange-300/60 dark:border-orange-500/50 flex items-center justify-center cursor-pointer hover:bg-orange-100"></div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-white/60 dark:bg-white/10 text-[10px] font-body font-bold text-orange-700 dark:text-orange-300">45m</span>
+</div>
+</div>
+<!-- Task Card 2 -->
+<div class="p-3 rounded-xl bg-home-bg dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/30 flex flex-col gap-2 shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<span class="text-base font-semibold leading-tight">Call Mom</span>
+<div class="size-5 shrink-0 rounded-full border-2 border-orange-300/60 dark:border-orange-500/50 flex items-center justify-center cursor-pointer hover:bg-orange-100"></div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-white/60 dark:bg-white/10 text-[10px] font-body font-bold text-orange-700 dark:text-orange-300">20m</span>
+<span class="material-symbols-outlined text-primary text-sm" title="Synced">favorite</span>
+</div>
+</div>
+<!-- Task Card 3 -->
+<div class="p-3 rounded-xl bg-home-bg dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/30 flex flex-col gap-2 shadow-sm">
+<div class="flex items-start justify-between gap-2">
+<span class="text-base font-semibold leading-tight">Water Plants</span>
+<div class="size-5 shrink-0 rounded-full border-2 border-orange-300/60 dark:border-orange-500/50 flex items-center justify-center cursor-pointer hover:bg-orange-100"></div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-white/60 dark:bg-white/10 text-[10px] font-body font-bold text-orange-700 dark:text-orange-300">10m</span>
+<span class="material-symbols-outlined text-primary text-sm" title="Synced">water_drop</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Brain Dump Drawer (Bottom Sheet) -->
+<div class="shrink-0 bg-white dark:bg-[#1a2c15] rounded-t-[2rem] shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100 dark:border-gray-800 relative z-20">
+<!-- Handle -->
+<div class="w-full flex justify-center pt-3 pb-1">
+<div class="h-1.5 w-12 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
+</div>
+<div class="px-6 pb-6 pt-2">
+<h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+                Brain Dump
+            </h3>
+<!-- Brain Dump Items (Horizontal Scroll) -->
+<div class="flex gap-3 overflow-x-auto no-scrollbar pb-2 mb-3">
+<div class="shrink-0 px-4 py-2 bg-gray-50 dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 flex items-center gap-2 group cursor-pointer hover:border-primary/50 transition-colors">
+<span class="font-body text-sm font-medium">Buy birthday gift</span>
+<span class="material-symbols-outlined text-gray-400 text-sm opacity-0 group-hover:opacity-100">add_circle</span>
+</div>
+<div class="shrink-0 px-4 py-2 bg-gray-50 dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 flex items-center gap-2 group cursor-pointer hover:border-primary/50 transition-colors">
+<span class="font-body text-sm font-medium">Research vacation</span>
+<span class="material-symbols-outlined text-gray-400 text-sm opacity-0 group-hover:opacity-100">add_circle</span>
+</div>
+<div class="shrink-0 px-4 py-2 bg-gray-50 dark:bg-white/5 rounded-lg border border-gray-200 dark:border-white/10 flex items-center gap-2 group cursor-pointer hover:border-primary/50 transition-colors">
+<span class="font-body text-sm font-medium">Car service</span>
+<span class="material-symbols-outlined text-gray-400 text-sm opacity-0 group-hover:opacity-100">add_circle</span>
+</div>
+</div>
+<!-- Input Area -->
+<div class="flex items-center gap-3">
+<div class="relative flex-1">
+<input class="w-full pl-4 pr-4 py-3 bg-gray-50 dark:bg-black/20 border-none rounded-xl text-sm font-body placeholder-gray-400 focus:ring-2 focus:ring-primary/20 focus:bg-white dark:focus:bg-black/40 transition-all" placeholder="Add a quick thought..." type="text"/>
+</div>
+<button class="size-11 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/30 text-white hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation -->
+<nav class="shrink-0 bg-white dark:bg-[#1a2c15] pb-6 pt-2 px-6 flex justify-between items-center border-t border-gray-100 dark:border-gray-800">
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-body font-medium">Calendar</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary">
+<span class="material-symbols-outlined fill-current">view_week</span>
+<span class="text-[10px] font-body font-medium">Planner</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-body font-medium">Profile</span>
+</button>
+</nav>
+</body></html>
