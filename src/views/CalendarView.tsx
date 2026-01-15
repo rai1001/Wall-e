@@ -5,8 +5,9 @@ import { WeekView } from "../components/calendar/WeekView";
 import { MonthView } from "../components/calendar/MonthView";
 import { ChevronLeft, ChevronRight, LayoutGrid, List } from "lucide-react";
 import { useEvents } from "../hooks/useEvents";
-import { useEventContext } from "../context/EventContext";
+import { useEventContext } from "../context/useEventContext";
 import { EventPanel } from "../components/calendar/EventPanel";
+import type { CreateEventInput } from "../services/eventService";
 
 export function CalendarView() {
     const [viewMode, setViewMode] = useState<'week' | 'month'>('week');
@@ -28,9 +29,10 @@ export function CalendarView() {
         setCurrentDate(prev => viewMode === 'month' ? addMonths(prev, 1) : new Date(prev.setDate(prev.getDate() + 7)));
     };
 
-    const handleSaveEvent = async (data: any) => {
+    const handleSaveEvent = async (data: CreateEventInput & { id?: string }) => {
         if (data.id) {
-            await updateEvent(data.id, data);
+            const { id, ...rest } = data;
+            await updateEvent(id, rest);
         } else {
             await addEvent(data);
         }

@@ -1,5 +1,5 @@
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 
 // Web Speech API types
 interface SpeechRecognitionEvent extends Event {
@@ -31,7 +31,12 @@ interface SpeechRecognition extends EventTarget {
     stop(): void;
     onresult: (event: SpeechRecognitionEvent) => void;
     onend: () => void;
-    onerror: (event: any) => void;
+    onerror: (event: SpeechRecognitionErrorEvent) => void;
+}
+
+interface SpeechRecognitionErrorEvent extends Event {
+    error: string;
+    message: string;
 }
 
 // Global window extension
@@ -45,13 +50,7 @@ declare global {
 export function useVoiceInput(onFinalTranscript: (text: string) => void) {
     const [isListening, setIsListening] = useState(false);
     const [transcript, setTranscript] = useState('');
-    const [support, setSupport] = useState(true);
-
-    useEffect(() => {
-        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-            setSupport(false);
-        }
-    }, []);
+    const support = typeof window !== 'undefined' && ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window);
 
     const startListening = useCallback(() => {
         if (!support) return;
@@ -89,7 +88,7 @@ export function useVoiceInput(onFinalTranscript: (text: string) => void) {
             setIsListening(false);
         };
 
-        recognition.onerror = (event) => {
+        recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
             console.error('Speech recognition error', event);
             setIsListening(false);
         };

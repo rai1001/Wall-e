@@ -6,8 +6,8 @@ import type { CreateEventInput } from "../../services/eventService";
 interface EventPanelProps {
     isOpen: boolean;
     onClose: () => void;
-    onSave: (event: CreateEventInput & { id?: string }) => Promise<any>;
-    onDelete?: (id: string) => Promise<any>;
+    onSave: (event: CreateEventInput & { id?: string }) => Promise<void>;
+    onDelete?: (id: string) => Promise<void>;
     initialData?: (Partial<CreateEventInput> & { id?: string }) | null;
 }
 
@@ -34,7 +34,7 @@ export function EventPanel({ isOpen, onClose, onSave, onDelete, initialData }: E
                 setDescription(initialData.description || '');
                 setStartTime(initialData.start_time || new Date('2026-01-16T10:00:00').toISOString());
                 setEndTime(initialData.end_time || new Date('2026-01-16T11:00:00').toISOString());
-                // @ts-ignore - source isn't in the strict type yet but it flows through
+                // @ts-expect-error - source isn't in the strict type yet but it flows through
                 setIsReadOnly(initialData.source === 'google');
             } else {
                 // Default empty state

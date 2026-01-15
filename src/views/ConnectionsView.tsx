@@ -1,9 +1,10 @@
 import { AccountCard } from "../components/connections/AccountCard";
 import { signInWithGoogle, supabase, signOut } from "../lib/supabase";
 import { useEffect, useState } from "react";
+import type { Session } from "@supabase/supabase-js";
 
 export function ConnectionsView() {
-    const [googleSession, setGoogleSession] = useState<any>(null);
+    const [googleSession, setGoogleSession] = useState<Session | null>(null);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {

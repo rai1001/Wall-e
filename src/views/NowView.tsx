@@ -17,20 +17,21 @@ export function NowView() {
     const [mockEvents, setMockEvents] = useState<CalendarEvent[] | null>(null);
 
     // Active Time
-    const [now, setNow] = useState(new Date());
+    const [actualNow, setActualNow] = useState(() => new Date());
 
     // Update time every minute if not debugging
     useEffect(() => {
         if (debugTime) {
-            setNow(debugTime);
             return;
         }
 
         const timer = setInterval(() => {
-            setNow(new Date());
+            setActualNow(new Date());
         }, 60000);
         return () => clearInterval(timer);
     }, [debugTime]);
+
+    const now = debugTime ?? actualNow;
 
     // Data Fetching
     const today = now;

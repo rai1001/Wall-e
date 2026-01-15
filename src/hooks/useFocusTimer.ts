@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 export interface FocusTimerState {
     elapsedSeconds: number;
@@ -36,23 +36,23 @@ export function useFocusTimer(initialDuration: number | null = null) {
         };
     }, [isActive, isPaused]);
 
-    const start = () => {
+    const start = useCallback(() => {
         setIsActive(true);
         setIsPaused(false);
         setElapsedSeconds(0);
-    };
+    }, []);
 
-    const stop = () => {
+    const stop = useCallback(() => {
         setIsActive(false);
         setIsPaused(false);
         setElapsedSeconds(0);
-    };
+    }, []);
 
-    const togglePause = () => {
+    const togglePause = useCallback(() => {
         setIsPaused(prev => !prev);
-    };
+    }, []);
 
-    const formatTime = (totalSeconds: number) => {
+    const formatTime = useCallback((totalSeconds: number) => {
         const h = Math.floor(totalSeconds / 3600);
         const m = Math.floor((totalSeconds % 3600) / 60);
         const s = totalSeconds % 60;
@@ -61,7 +61,7 @@ export function useFocusTimer(initialDuration: number | null = null) {
             return `${h}:${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
         }
         return `${m}:${s < 10 ? '0' : ''}${s}`;
-    };
+    }, []);
 
     return {
         elapsedSeconds,

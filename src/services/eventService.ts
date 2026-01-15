@@ -1,28 +1,6 @@
 import { supabase } from '../lib/supabase';
 import type { CalendarEvent } from '../components/calendar/EventChip';
-
-export interface DbEvent {
-    id: string;
-    user_id: string;
-    title: string;
-    description?: string;
-    start_time: string;
-    end_time: string;
-    is_all_day: boolean;
-    category: 'work' | 'home' | 'personal';
-    location?: string;
-    created_at: string;
-}
-
-export interface CreateEventInput {
-    title: string;
-    description: string;
-    location: string;
-    start_time: string;
-    end_time: string;
-    category: 'work' | 'home' | 'personal';
-    is_all_day: boolean;
-}
+import type { CreateEventInput, DbEvent } from '../types/events';
 
 export const eventService = {
     async listEvents(start: Date, end: Date) {
@@ -89,3 +67,5 @@ function mapDbToUi(dbEvent: DbEvent): CalendarEvent {
         start_time: dbEvent.start_time
     };
 }
+
+export type { CreateEventInput, DbEvent };

@@ -8,21 +8,21 @@ export function useFocusMode() {
     const [timeLeft, setTimeLeft] = useState(FOCUS_DURATION);
     const [currentTask, setCurrentTask] = useState<string | null>(null);
 
-    // Initial tick to demo functional timer
     useEffect(() => {
-        let interval: any;
+        if (!isActive) return;
 
-        if (isActive && timeLeft > 0) {
-            interval = setInterval(() => {
-                setTimeLeft((prev) => prev - 1);
-            }, 1000);
-        } else if (timeLeft === 0) {
-            // Timer done
-            setIsActive(false);
-        }
+        const interval = window.setInterval(() => {
+            setTimeLeft((prev) => {
+                if (prev <= 1) {
+                    setIsActive(false);
+                    return 0;
+                }
+                return prev - 1;
+            });
+        }, 1000);
 
         return () => clearInterval(interval);
-    }, [isActive, timeLeft]);
+    }, [isActive]);
 
     const startSession = (task: string) => {
         setCurrentTask(task);
@@ -36,7 +36,7 @@ export function useFocusMode() {
     };
 
     const togglePause = () => {
-        setIsActive(!isActive);
+        setIsActive(prev => !prev);
     };
 
     const formatTime = (seconds: number) => {

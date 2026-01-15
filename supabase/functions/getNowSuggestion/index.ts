@@ -1,4 +1,3 @@
-// deno-lint-ignore-file no-explicit-any
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
@@ -6,18 +5,67 @@ const corsHeaders = {
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-function json(resBody: any, status = 200) {
+type StepResult = {
+    next_step: string;
+    step_minutes: number;
+};
+
+type StepPrediction = {
+    next_step?: string;
+    step_minutes?: number;
+};
+
+type TaskRow = {
+    id: string;
+    title: string;
+    type: "work" | "home" | "pet" | "personal";
+    description?: string | null;
+    est_minutes?: number | null;
+    energy?: "low" | "medium" | "high" | null;
+    status: "todo" | "in_progress" | "paused" | "done";
+};
+
+type AntigravityPayload = {
+    context: string;
+    locale: string;
+    coach_mode: string;
+    user_profile: {
+        needs: string[];
+        tone: string[];
+    };
+    task: {
+        id: string;
+        title: string;
+        type: string;
+        description: string | null;
+        estimated_minutes: number;
+        energy: string;
+        status: string;
+    };
+    constraints: {
+        single_step_only: boolean;
+        step_minutes_min: number;
+        step_minutes_max: number;
+        no_planning: boolean;
+        no_new_tasks: boolean;
+        no_judgment: boolean;
+        output_format: string;
+    };
+    instruction: string;
+};
+
+function json(resBody: unknown, status = 200) {
     return new Response(JSON.stringify(resBody), {
         status,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
 }
 
-function pickFallbackStep(taskTitle: string) {
+function pickFallbackStep(taskTitle: string): StepResult {
     return { next_step: `Ordena 5 cosas visibles relacionadas con: ${taskTitle}`, step_minutes: 6 };
 }
 
-function coerceStep(ai: any, taskTitle: string) {
+function coerceStep(ai: StepPrediction, taskTitle: string): StepResult {
     const next_step = typeof ai?.next_step === "string" ? ai.next_step.trim() : "";
     const step_minutes = Number.isFinite(ai?.step_minutes) ? Number(ai.step_minutes) : NaN;
 
@@ -28,7 +76,7 @@ function coerceStep(ai: any, taskTitle: string) {
     return { next_step, step_minutes: mins };
 }
 
-async function callAntigravity(payload: any) {
+async function callAntigravity(payload: AntigravityPayload): Promise<StepPrediction> {
     const apiKey = Deno.env.get("ANTIGRAVITY_API_KEY")!;
     const model = Deno.env.get("ANTIGRAVITY_MODEL") || "default";
     const system = Deno.env.get("ANTIGRAVITY_SYSTEM_PROMPT") || "";
@@ -53,11 +101,18 @@ async function callAntigravity(payload: any) {
     if (!r.ok) throw new Error(`antigravity_failed_${r.status}`);
     const data = await r.json();
     // Ajusta según respuesta real
-    const content = data?.choices?.[0]?.message?.content ?? data?.content ?? "{}";
-    return JSON.parse(content);
+    const fallbackContent = "{}";
+    const messageContent =
+        typeof data?.choices?.[0]?.message?.content === "string"
+            ? data.choices[0].message.content
+            : undefined;
+    const alternativeContent = typeof data?.content === "string" ? data.content : undefined;
+    const content = messageContent ?? alternativeContent ?? fallbackContent;
+    const parsed = JSON.parse(content);
+    return typeof parsed === "object" && parsed !== null ? (parsed as StepPrediction) : {};
 }
 
-function taskToAIPayload(task: any) {
+function taskToAIPayload(task: TaskRow): AntigravityPayload {
     return {
         context: "start_task",
         locale: "es-ES",
@@ -107,18 +162,18 @@ export default async function handler(req: Request) {
 
         // 1) Si hay in_progress, esa manda
         const { data: inProg } = await admin
-            .from("tasks")
+            .from<TaskRow>("tasks")
             .select("*")
             .eq("user_id", user_id)
             .eq("status", "in_progress")
             .maybeSingle();
 
-        let task = inProg;
+        let task: TaskRow | null = inProg;
 
         // 2) Si no hay, elige una "now task" simple (primera todo)
         if (!task) {
             const { data: next } = await admin
-                .from("tasks")
+                .from<TaskRow>("tasks")
                 .select("*")
                 .eq("user_id", user_id)
                 .in("status", ["todo", "paused"])
@@ -153,7 +208,7 @@ export default async function handler(req: Request) {
             const aiPayload = taskToAIPayload(task);
             const ai = await callAntigravity(aiPayload);
             step = coerceStep(ai, task.title);
-        } catch (_e) {
+        } catch {
             // fallback silencioso
             step = pickFallbackStep(task.title);
         }
@@ -181,8 +236,9 @@ export default async function handler(req: Request) {
             allowed_actions: ["done", "pause", "stuck", "parking"],
             checkin_minutes: 10,
         });
-    } catch (e: any) {
-        return json({ error: "server_error", detail: String(e?.message ?? e) }, 500);
+    } catch (e: unknown) {
+        const detail = e instanceof Error ? e.message : String(e);
+        return json({ error: "server_error", detail }, 500);
     }
 }
 

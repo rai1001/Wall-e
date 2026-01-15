@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { eventService, type CreateEventInput } from '../services/eventService';
 import { googleCalendarService } from '../services/googleCalendarService';
 import type { CalendarEvent } from '../components/calendar/EventChip';
@@ -8,12 +8,17 @@ export function useEvents(viewStart: Date, viewEnd: Date) {
     const [loading, setLoading] = useState(true);
     const [error] = useState<Error | null>(null);
 
+    const viewStartIso = useMemo(() => viewStart.toISOString(), [viewStart]);
+    const viewEndIso = useMemo(() => viewEnd.toISOString(), [viewEnd]);
+
     const fetchEvents = useCallback(async () => {
         // Resilient fetch: Try both in parallel
         // We use Promise.allSettled so one failure doesn't block the other
+        const start = new Date(viewStartIso);
+        const end = new Date(viewEndIso);
         const [internalResult, googleResult] = await Promise.allSettled([
-            eventService.listEvents(viewStart, viewEnd),
-            googleCalendarService.listEvents(viewStart, viewEnd)
+            eventService.listEvents(start, end),
+            googleCalendarService.listEvents(start, end)
         ]);
 
         let internalEvents: CalendarEvent[] = [];
@@ -33,10 +38,11 @@ export function useEvents(viewStart: Date, viewEnd: Date) {
 
         setEvents([...internalEvents, ...googleEvents]);
         setLoading(false);
-    }, [viewStart.toISOString(), viewEnd.toISOString()]);
+    }, [viewStartIso, viewEndIso]);
 
-    // Initial fetch
+    // Run fetch when the viewed range changes.
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         fetchEvents();
     }, [fetchEvents]);
 

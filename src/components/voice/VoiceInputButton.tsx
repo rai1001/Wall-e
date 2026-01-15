@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Mic, Loader2, Sparkles } from 'lucide-react';
 import { useVoiceInput } from '../../hooks/useVoiceInput';
 import { geminiService } from '../../services/geminiService';
-import { useEventContext } from '../../context/EventContext';
+import { useEventContext } from '../../context/useEventContext';
 
 export function VoiceInputButton() {
     const { openCreateEvent } = useEventContext();

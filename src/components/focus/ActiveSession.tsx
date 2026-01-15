@@ -15,16 +15,17 @@ interface ActiveSessionProps {
 export function ActiveSession({ taskTitle, taskSubtitle, onComplete, onCancel }: ActiveSessionProps) {
     // Start timer automatically on mount
     const timer = useFocusTimer();
+    const { elapsedSeconds, isPaused, start, stop, togglePause, formatTime } = timer;
     const [isCelebrating, setIsCelebrating] = useState(false);
 
     React.useEffect(() => {
-        timer.start();
-        return () => timer.stop();
-    }, []);
+        start();
+        return () => stop();
+    }, [start, stop]);
 
     const handleComplete = () => {
         setIsCelebrating(true);
-        timer.stop();
+        stop();
         confetti({
             particleCount: 150,
             spread: 70,
@@ -90,7 +91,7 @@ export function ActiveSession({ taskTitle, taskSubtitle, onComplete, onCancel }:
                 {/* Timer Display */}
                 <div className="relative group cursor-default">
                     <div className="text-[6rem] md:text-[8rem] font-black font-variant-numeric tabular-nums leading-none tracking-tight select-none">
-                        {timer.formatTime(timer.elapsedSeconds)}
+                        {formatTime(elapsedSeconds)}
                     </div>
                     <div className="text-center text-white/30 text-lg font-medium mt-2">
                         Time Elapsed
@@ -100,11 +101,11 @@ export function ActiveSession({ taskTitle, taskSubtitle, onComplete, onCancel }:
                 {/* Controls */}
                 <div className="flex items-center gap-6 w-full max-w-xs">
                     <Button
-                        onClick={timer.togglePause}
+                        onClick={togglePause}
                         variant="ghost"
                         className="flex-1 bg-white/10 hover:bg-white/20 text-white border-none h-16 rounded-2xl"
                     >
-                        {timer.isPaused ? <Play size={28} fill="currentColor" /> : <Pause size={28} fill="currentColor" />}
+                        {isPaused ? <Play size={28} fill="currentColor" /> : <Pause size={28} fill="currentColor" />}
                     </Button>
 
                     <Button

@@ -43,7 +43,8 @@ export const googleCalendarService = {
             }
 
             const data = await response.json();
-            return (data.items || []).map(mapGoogleEventToUi);
+            const items: GoogleCalendarEvent[] = Array.isArray(data?.items) ? data.items : [];
+            return items.map(mapGoogleEventToUi);
 
         } catch (error) {
             console.error('Failed to fetch Google Calendar events', error);
@@ -53,10 +54,19 @@ export const googleCalendarService = {
     }
 };
 
-function mapGoogleEventToUi(gEvent: any): CalendarEvent {
+type GoogleCalendarEvent = {
+    id: string;
+    summary?: string | null;
+    description?: string | null;
+    location?: string | null;
+    start: { dateTime?: string | null; date?: string | null };
+    end: { dateTime?: string | null; date?: string | null };
+};
+
+function mapGoogleEventToUi(gEvent: GoogleCalendarEvent): CalendarEvent {
     // Google Events have 'dateTime' or 'date' (all-day)
-    const startTimeStr = gEvent.start.dateTime || gEvent.start.date;
-    const endTimeStr = gEvent.end.dateTime || gEvent.end.date;
+    const startTimeStr = gEvent.start.dateTime ?? gEvent.start.date ?? new Date().toISOString();
+    const endTimeStr = gEvent.end.dateTime ?? gEvent.end.date ?? new Date().toISOString();
 
     const start = new Date(startTimeStr);
     const end = new Date(endTimeStr);
