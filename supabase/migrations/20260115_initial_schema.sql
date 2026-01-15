@@ -1,5 +1,5 @@
 -- Create calendar_events table
-create table public.calendar_events (
+create table if not exists public.calendar_events (
   id uuid not null default gen_random_uuid(),
   user_id uuid not null default auth.uid(),
   title text not null,
@@ -20,18 +20,22 @@ create table public.calendar_events (
 alter table public.calendar_events enable row level security;
 
 -- Policies
+drop policy if exists "Users can view their own events" on public.calendar_events;
 create policy "Users can view their own events" 
   on public.calendar_events for select 
   using (auth.uid() = user_id);
 
+drop policy if exists "Users can insert their own events" on public.calendar_events;
 create policy "Users can insert their own events" 
   on public.calendar_events for insert 
   with check (auth.uid() = user_id);
 
+drop policy if exists "Users can update their own events" on public.calendar_events;
 create policy "Users can update their own events" 
   on public.calendar_events for update 
   using (auth.uid() = user_id);
 
+drop policy if exists "Users can delete their own events" on public.calendar_events;
 create policy "Users can delete their own events" 
   on public.calendar_events for delete 
   using (auth.uid() = user_id);
