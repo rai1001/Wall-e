@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Calendar, Home, BookOpen, BarChart2, Settings } from "lucide-react";
+import { Calendar, Home, LayoutGrid, BookOpen, BarChart2, Settings, Link2 } from "lucide-react";
 import { clsx } from "clsx";
 
 interface MobileLayoutProps {
@@ -10,6 +10,8 @@ export function MobileLayout({ children }: MobileLayoutProps) {
     const navItems = [
         { to: "/calendar", icon: Calendar, label: "Calendar" },
         { to: "/now", icon: Home, label: "Home" },
+        { to: "/organize", icon: LayoutGrid, label: "Organize" },
+        { to: "/connections", icon: Link2, label: "Connections" },
         { to: "/assistant", icon: BookOpen, label: "Planner" },
         { to: "/summary", icon: BarChart2, label: "Stats" },
         { to: "/settings", icon: Settings, label: "Settings" },
@@ -23,8 +25,8 @@ export function MobileLayout({ children }: MobileLayoutProps) {
             </main>
 
             {/* Floating Bottom Navigation */}
-            <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-auto min-w-[280px] max-w-sm z-30">
-                <div className="bg-main/95 backdrop-blur-xl rounded-full p-2 shadow-xl border border-white/5 mx-4 flex items-center justify-between relative">
+            <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-md z-30">
+                <div className="bg-main/95 backdrop-blur-xl rounded-full p-2 shadow-xl border border-white/5 mx-4 flex flex-wrap gap-2 items-center justify-center relative">
                     {navItems.map((item) => (
                         <NavLink
                             key={item.to}
@@ -33,7 +35,7 @@ export function MobileLayout({ children }: MobileLayoutProps) {
                             title={item.label}
                             className={({ isActive }) =>
                                 clsx(
-                                    "flex flex-col items-center justify-center w-14 h-12 rounded-full transition-all duration-300 relative z-10",
+                                    "flex flex-col items-center justify-center w-12 h-12 rounded-full transition-all duration-300 relative z-10",
                                     isActive ? "text-terracotta bg-cream shadow-soft scale-105" : "text-white/40 hover:text-white hover:bg-white/10"
                                 )
                             }
