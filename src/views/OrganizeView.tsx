@@ -41,7 +41,6 @@ export function OrganizeView() {
 
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 min-h-0 pb-20 md:pb-0">
                 <ContextColumn
-                    context="work"
                     title="Work"
                     headerIcon={<Briefcase className="text-terracotta" size={24} />}
                 >
@@ -49,7 +48,6 @@ export function OrganizeView() {
                 </ContextColumn>
 
                 <ContextColumn
-                    context="home"
                     title="Home"
                     headerIcon={<Home className="text-sage" size={24} />}
                 >

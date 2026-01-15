@@ -1,4 +1,3 @@
-import React from 'react';
 import { Circle, CheckCircle2, PlayCircle } from 'lucide-react';
 
 interface TimelineItemProps {

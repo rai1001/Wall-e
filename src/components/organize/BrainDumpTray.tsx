@@ -1,4 +1,4 @@
-import { Brain, Eraser, Plus, Lightbulb } from "lucide-react";
+import { Plus, Lightbulb } from "lucide-react";
 import { useState } from "react";
 
 export function BrainDumpTray() {

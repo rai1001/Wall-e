@@ -25,7 +25,7 @@ export function WeekView({ currentDate, events, loading = false, onEventClick }:
             let dayIndex = eventDate.getDay() - 1;
             if (dayIndex === -1) dayIndex = 6;
 
-            const startHour = parseInt(event.time.split(':')[0]) || 9;
+            if (dayIndex === -1) dayIndex = 6;
             // Simple parsing for now, ideally parse ISO string properly
             // If event.time is HH:MM
 

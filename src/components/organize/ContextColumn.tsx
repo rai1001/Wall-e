@@ -1,13 +1,12 @@
-
+import type { ReactNode } from "react";
 
 interface ContextColumnProps {
-    context: 'work' | 'home';
     title: string;
-    headerIcon?: React.ReactNode;
-    children?: React.ReactNode;
+    headerIcon: ReactNode;
+    children: ReactNode;
 }
 
-export function ContextColumn({ context, title, headerIcon, children }: ContextColumnProps) {
+export function ContextColumn({ title, headerIcon, children }: ContextColumnProps) {
 
     return (
         <div className="flex flex-col gap-4 min-h-0 h-full">

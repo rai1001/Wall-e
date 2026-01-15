@@ -1,4 +1,4 @@
-import { Check, CalendarIcon, RefreshCcw, Heart, Droplets, CalendarCheck } from "lucide-react";
+import { Check, Heart, RefreshCcw } from "lucide-react";
 import { clsx } from "clsx";
 
 export interface Task {

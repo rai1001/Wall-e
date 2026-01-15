@@ -11,7 +11,6 @@ interface AppShellProps {
 export function AppShell({ children }: AppShellProps) {
     const location = useLocation();
     const isNowMode = location.pathname === '/now';
-    const isMobileSuiteRoute = ['/now', '/assistant', '/summary', '/settings'].includes(location.pathname);
 
     // Simple mobile detection (can be enhanced with useMediaQuery)
     const [isMobile, setIsMobile] = useState(false);

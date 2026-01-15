@@ -13,7 +13,7 @@ interface EventPanelProps {
 
 export function EventPanel({ isOpen, onClose, onSave, onDelete, initialData }: EventPanelProps) {
     const [title, setTitle] = useState('');
-    const [type, setType] = useState<'work' | 'home'>('work');
+    const [type, setType] = useState<'work' | 'home' | 'personal'>('work');
     const [location, setLocation] = useState('');
     const [description, setDescription] = useState('');
     const [saving, setSaving] = useState(false);

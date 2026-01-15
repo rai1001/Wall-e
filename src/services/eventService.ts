@@ -9,7 +9,7 @@ export interface DbEvent {
     start_time: string;
     end_time: string;
     is_all_day: boolean;
-    category: 'work' | 'home';
+    category: 'work' | 'home' | 'personal';
     location?: string;
     created_at: string;
 }
@@ -20,7 +20,7 @@ export interface CreateEventInput {
     location: string;
     start_time: string;
     end_time: string;
-    category: 'work' | 'home';
+    category: 'work' | 'home' | 'personal';
     is_all_day: boolean;
 }
 

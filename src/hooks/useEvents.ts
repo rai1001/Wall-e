@@ -6,7 +6,7 @@ import type { CalendarEvent } from '../components/calendar/EventChip';
 export function useEvents(viewStart: Date, viewEnd: Date) {
     const [events, setEvents] = useState<CalendarEvent[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<Error | null>(null);
+    const [error] = useState<Error | null>(null);
 
     const fetchEvents = useCallback(async () => {
         // Resilient fetch: Try both in parallel
