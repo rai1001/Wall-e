@@ -2,8 +2,10 @@ import { AccountCard } from "../components/connections/AccountCard";
 import { Button } from "../components/ui/Button";
 import { signInWithGoogle, supabase, signOut } from "../lib/supabase";
 import { useEffect, useState, useCallback } from "react";
+import type { ChangeEvent } from "react";
 import { eventService } from "../services/eventService";
 import { googleCalendarService, type GoogleCalendarListItem } from "../services/googleCalendarService";
+import { importIcsFile } from "../services/icsImportService";
 import { addDays, startOfDay } from "date-fns";
 import type { Session } from "@supabase/supabase-js";
 
@@ -14,6 +16,10 @@ export function ConnectionsView() {
     const [refreshing, setRefreshing] = useState(false);
     const [importingCalendar, setImportingCalendar] = useState<string | null>(null);
     const [message, setMessage] = useState<string | null>(null);
+    const [icsFile, setIcsFile] = useState<File | null>(null);
+    const [icsImporting, setIcsImporting] = useState(false);
+    const [icsMessage, setIcsMessage] = useState<string | null>(null);
+    const [icsInputKey, setIcsInputKey] = useState(0);
 
     const loadCalendars = useCallback(async (token?: string) => {
         if (!token) {
@@ -121,6 +127,53 @@ export function ConnectionsView() {
         }
     };
 
+    const handleIcsFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0] ?? null;
+        setIcsFile(file);
+        if (file) {
+            setIcsMessage(`Ready to import ${file.name}`);
+        } else {
+            setIcsMessage(null);
+        }
+    };
+
+    const handleIcsImport = async () => {
+        if (!icsFile) {
+            setIcsMessage('Select an .ics file first.');
+            return;
+        }
+
+        setIcsImporting(true);
+        setIcsMessage(null);
+
+        try {
+            const result = await importIcsFile(icsFile);
+            const summaries: string[] = [];
+            if (result.imported) {
+                summaries.push(`Imported ${result.imported} event${result.imported === 1 ? '' : 's'}`);
+            }
+            if (result.skipped) {
+                summaries.push(`Skipped ${result.skipped}`);
+            }
+            if (result.errors.length) {
+                summaries.push(`Errors: ${result.errors.slice(0, 2).join('; ')}`);
+            }
+
+            setIcsMessage(
+                summaries.length
+                    ? summaries.join(' · ')
+                    : 'No events were found in the file.'
+            );
+        } catch (error) {
+            const fallbackMessage = error instanceof Error ? error.message : 'Failed to import this file.';
+            setIcsMessage(fallbackMessage);
+        } finally {
+            setIcsImporting(false);
+            setIcsFile(null);
+            setIcsInputKey((prev) => prev + 1);
+        }
+    };
+
     return (
         <div className="max-w-2xl mx-auto space-y-8 pb-20 pt-8 animate-in slide-in-from-bottom duration-500">
             <div className="text-center space-y-3 mb-12">
@@ -196,6 +249,38 @@ export function ConnectionsView() {
                         )}
                     </div>
                 )}
+
+                <div className="mt-4 space-y-3 rounded-2xl border border-main/10 bg-cream/80 p-4 shadow-sm">
+                    <div>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-main/40">Import from .ics</p>
+                        <p className="text-sm text-main/60 mt-1">Upload a calendar export to bring external events into Wall-e.</p>
+                    </div>
+
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <label className="flex-1">
+                            <span className="sr-only">Select an ICS file</span>
+                            <input
+                                key={icsInputKey}
+                                type="file"
+                                accept=".ics,text/calendar"
+                                onChange={handleIcsFileChange}
+                                className="block w-full cursor-pointer rounded-xl border border-main/20 bg-white px-4 py-3 text-sm text-main/70 transition hover:border-main/40 file:mr-4 file:rounded-full file:border-0 file:bg-main file:px-4 file:py-2 file:text-sm file:font-semibold file:text-cream hover:file:bg-main/80"
+                            />
+                        </label>
+                        <Button
+                            size="sm"
+                            variant="secondary"
+                            onClick={handleIcsImport}
+                            disabled={icsImporting || !icsFile}
+                        >
+                            {icsImporting ? 'Importing...' : 'Import .ics'}
+                        </Button>
+                    </div>
+
+                    {icsMessage && (
+                        <p className="text-xs text-main/40 uppercase tracking-widest">{icsMessage}</p>
+                    )}
+                </div>
 
                 <AccountCard
                     type="outlook"
