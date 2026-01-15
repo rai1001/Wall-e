@@ -9,4 +9,21 @@ export default defineConfig({
     port: 5175,
     strictPort: true,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('react')) return 'vendor-react';
+          if (id.includes('date-fns')) return 'vendor-date';
+          if (id.includes('framer-motion')) return 'vendor-motion';
+          if (id.includes('@supabase')) return 'vendor-supabase';
+          if (id.includes('@google/generative-ai')) return 'vendor-gemini';
+          if (id.includes('lucide-react')) return 'vendor-icons';
+          if (id.includes('canvas-confetti')) return 'vendor-effects';
+          return 'vendor';
+        },
+      },
+    },
+  },
 })
