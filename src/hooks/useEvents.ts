@@ -7,6 +7,7 @@ export function useEvents(viewStart: Date, viewEnd: Date) {
     const [events, setEvents] = useState<CalendarEvent[]>([]);
     const [loading, setLoading] = useState(true);
     const [error] = useState<Error | null>(null);
+    const [requiresSignIn, setRequiresSignIn] = useState(false);
 
     const viewStartIso = useMemo(() => viewStart.toISOString(), [viewStart]);
     const viewEndIso = useMemo(() => viewEnd.toISOString(), [viewEnd]);
@@ -16,6 +17,7 @@ export function useEvents(viewStart: Date, viewEnd: Date) {
         // We use Promise.allSettled so one failure doesn't block the other
         const start = new Date(viewStartIso);
         const end = new Date(viewEndIso);
+        setRequiresSignIn(false);
         const [internalResult, googleResult] = await Promise.allSettled([
             eventService.listEvents(start, end),
             googleCalendarService.listEvents(start, end)
@@ -28,6 +30,10 @@ export function useEvents(viewStart: Date, viewEnd: Date) {
             internalEvents = internalResult.value.map(e => ({ ...e, source: 'internal' }));
         } else {
             console.warn('Internal events fetch failed:', internalResult.reason);
+            const status = (internalResult.reason as { status?: number })?.status;
+            if (status === 401) {
+                setRequiresSignIn(true);
+            }
         }
 
         if (googleResult.status === 'fulfilled') {
@@ -64,5 +70,5 @@ export function useEvents(viewStart: Date, viewEnd: Date) {
         setEvents(prev => prev.filter(e => e.id !== id));
     };
 
-    return { events, loading, error, refetch: fetchEvents, addEvent, updateEvent, deleteEvent };
+    return { events, loading, error, requiresSignIn, refetch: fetchEvents, addEvent, updateEvent, deleteEvent };
 }

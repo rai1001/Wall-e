@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { format, addMonths, subMonths, startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
+import { Link } from "react-router-dom";
 import { CalendarSidebar } from "../components/calendar/CalendarSidebar";
 import { WeekView } from "../components/calendar/WeekView";
 import { MonthView } from "../components/calendar/MonthView";
@@ -20,7 +21,7 @@ export function CalendarView() {
     const viewStart = viewMode === 'month' ? startOfMonth(currentDate) : startOfWeek(currentDate, { weekStartsOn: 1 });
     const viewEnd = viewMode === 'month' ? endOfMonth(currentDate) : endOfWeek(currentDate, { weekStartsOn: 1 });
 
-    const { events, loading, addEvent, updateEvent, deleteEvent } = useEvents(viewStart, viewEnd);
+    const { events, loading, requiresSignIn, addEvent, updateEvent, deleteEvent } = useEvents(viewStart, viewEnd);
 
     const handlePrev = () => {
         setCurrentDate(prev => viewMode === 'month' ? subMonths(prev, 1) : new Date(prev.setDate(prev.getDate() - 7)));
@@ -92,6 +93,14 @@ export function CalendarView() {
                         </Button>
                     </div>
                 </div>
+
+                {requiresSignIn && (
+                    <div className="mx-8 mt-4 rounded-2xl border border-terracotta/30 bg-terracotta/10 px-6 py-4 text-sm text-main/70 flex flex-wrap items-center gap-3">
+                        <p className="flex-1">
+                            Conecta tu calendario en <Link to="/connections" className="text-terracotta font-semibold underline-offset-4 decoration-2 decoration-terracotta hover:underline">Conexiones</Link> para ver tus eventos sincronizados.
+                        </p>
+                    </div>
+                )}
 
                 {/* Grid */}
                 <div className="flex-1 overflow-y-auto">
