@@ -1,6 +1,16 @@
 
 import { createContext, useContext, useState, type ReactNode } from 'react';
-import type { CreateEventInput } from '../services/eventService';
+
+export interface CreateEventInput {
+    id?: string;
+    title: string;
+    category: 'work' | 'home' | 'personal';
+    description: string;
+    location: string;
+    start_time: string;
+    end_time: string;
+    is_all_day: boolean;
+}
 
 interface EventContextType {
     isPanelOpen: boolean;

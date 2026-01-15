@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { X, Clock, MapPin, AlignLeft, Briefcase, Home, Trash2 } from "lucide-react";
+import { X, Clock, MapPin, AlignLeft, Briefcase, Home, User, Trash2 } from "lucide-react";
 import { Button } from "../ui/Button";
 import type { CreateEventInput } from "../../services/eventService";
 
@@ -134,6 +134,12 @@ export function EventPanel({ isOpen, onClose, onSave, onDelete, initialData }: E
                         disabled={isReadOnly}
                         className={`flex-1 py-2 rounded-lg border font-medium flex justify-center items-center gap-2 transition-colors ${type === 'work' ? 'border-terracotta bg-terracotta/5 text-terracotta' : 'border-main/10 text-main/40 hover:bg-main/5'}`}>
                         <Briefcase size={16} /> Work
+                    </button>
+                    <button
+                        onClick={() => setType('personal')}
+                        disabled={isReadOnly}
+                        className={`flex-1 py-2 rounded-lg border font-medium flex justify-center items-center gap-2 transition-colors ${type === 'personal' ? 'border-terracotta bg-terracotta/5 text-terracotta' : 'border-main/10 text-main/40 hover:bg-main/5'}`}>
+                        <User size={16} /> Personal
                     </button>
                     <button
                         onClick={() => setType('home')}
