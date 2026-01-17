@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "test": "tsc --noEmit && node tests/validate-schema.cjs",
+    "test": "tsc --noEmit && node tests/assistant.test.cjs && node tests/validate-schema.cjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

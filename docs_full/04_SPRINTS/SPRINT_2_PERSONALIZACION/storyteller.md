@@ -53,3 +53,7 @@
 ## Feedback visual RPC
 - `PersonalizationControls` ahora muestra el título y hora del evento que devolvió `calendar.create_event`, exhibiendo en pantalla el feedback del RPC para que el usuario vea “qué se creó” sin mover lógica al cliente.
 - Esto permite validar también en QA que la respuesta del RPC contiene `organization_id` correcto (el hook `calendarActions` la reportará en cualquier error) antes de mostrar el `queue_processor` en vivo.
+
+## Seguimiento QA
+- Consulta de seguimiento para la cola: `SET LOCAL request.jwt.claims.organization_id = '<otra-org>'; SELECT * FROM public.calendar_change_queue WHERE status = 'pending';` (debe devolver 0 filas y mostrar errores si se intenta leer jobs de otra org).
+- Confirmar con la vista normal que los jobs propios siguen disponibles sin sobreescribir `organization_id`, y documentar los resultados en la checklist de datos antes de cerrar el sprint.
