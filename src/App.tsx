@@ -8,6 +8,7 @@ import ConnectionsPreview from './components/sprint1/ConnectionsPreview';
 import EventList from './components/sprint1/EventList';
 import PersonalizationControls from './components/sprint1/PersonalizationControls';
 import AssistantPanel from './components/sprint3/AssistantPanel';
+import NowEnginePanel from './components/sprint4/NowEnginePanel';
 
 export default function App() {
     return (
@@ -30,6 +31,7 @@ export default function App() {
                 <PersonalizationControls />
                 <EventList />
             </section>
+            <NowEnginePanel />
         </main>
     </div>
 </div>

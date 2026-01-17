@@ -19,6 +19,10 @@ const requiredSnippets = [
   'calendar.create_event',
   'calendar.update_event',
   'calendar.delete_event'
+  , 'public.tasks_get_next_now_task'
+  , 'public.focus_start_session'
+  , 'public.focus_end_session'
+  , 'public.parking_add_item'
 ];
 
 requiredSnippets.forEach((snippet) => {
