@@ -1,15 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const migrationPath = path.join(
-  __dirname,
-  '..',
-  'supabase',
-  'migrations',
-  '20260120_000000_multitenant_baseline.sql'
-);
+const migrationsDir = path.join(__dirname, '..', 'supabase', 'migrations');
+const migrationFiles = fs.readdirSync(migrationsDir).filter((f) => f.endsWith('.sql')).sort();
 
-const fixtures = fs.readFileSync(migrationPath, 'utf8');
+const fixtures = migrationFiles
+  .map((file) => fs.readFileSync(path.join(migrationsDir, file), 'utf8'))
+  .join('\n\n');
 
 const requiredSnippets = [
   'create table if not exists public.organizations',
@@ -19,6 +16,9 @@ const requiredSnippets = [
   'create table if not exists public.tasks',
   'create table if not exists public.plan_assistant_suggestions',
   'enable row level security',
+  'calendar.create_event',
+  'calendar.update_event',
+  'calendar.delete_event'
 ];
 
 requiredSnippets.forEach((snippet) => {

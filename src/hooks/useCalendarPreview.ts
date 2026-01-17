@@ -31,7 +31,7 @@ const fallbackOrganizer = [
 
 export function useCalendarPreview() {
   const [week, setWeek] = useState(fallbackWeek);
-  const [month, setMonth] = useState(fallbackMonth);
+  const [month] = useState(fallbackMonth);
   const [connections, setConnections] = useState(fallbackConnections);
   const [organizer, setOrganizer] = useState(fallbackOrganizer);
   const [loading, setLoading] = useState(true);

@@ -3,7 +3,7 @@ const nowTasks = [
   { title: 'Preparar onboarding org', owner: 'SysOps', status: 'scheduled' },
 ];
 
-const statusBadge = {
+const statusBadge: Record<string, string> = {
   'in-progress': 'bg-terracotta/10 text-terracotta',
   scheduled: 'bg-sage/10 text-sage',
 };
