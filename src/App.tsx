@@ -1,45 +1,35 @@
-import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AppShell } from './components/layout/AppShell';
+import OnboardingPanel from './components/sprint0/OnboardingPanel';
+import NowPreview from './components/sprint0/NowPreview';
+import WeekPreview from './components/sprint0/WeekPreview';
+import StoryPanel from './components/sprint0/StoryPanel';
+import MonthPreview from './components/sprint1/MonthPreview';
+import OrganizerPreview from './components/sprint1/OrganizerPreview';
+import ConnectionsPreview from './components/sprint1/ConnectionsPreview';
+import EventList from './components/sprint1/EventList';
+import PersonalizationControls from './components/sprint1/PersonalizationControls';
 
-import { EventProvider } from './context/EventContext';
-import { GlobalEventPanel } from './components/calendar/GlobalEventPanel';
-
-const CalendarView = lazy(() => import('./views/CalendarView').then((mod) => ({ default: mod.CalendarView })));
-const OrganizeView = lazy(() => import('./views/OrganizeView').then((mod) => ({ default: mod.OrganizeView })));
-const ConnectionsView = lazy(() => import('./views/ConnectionsView').then((mod) => ({ default: mod.ConnectionsView })));
-const NowView = lazy(() => import('./views/NowView').then((mod) => ({ default: mod.NowView })));
-const AssistantView = lazy(() => import('./views/AssistantView').then((mod) => ({ default: mod.AssistantView })));
-const DailySummaryView = lazy(() => import('./views/DailySummaryView').then((mod) => ({ default: mod.DailySummaryView })));
-
-function App() {
-    const loadingFallback = (
-        <div className="flex min-h-[50vh] items-center justify-center text-sm text-main/40">
-            Loading...
-        </div>
-    );
-
+export default function App() {
     return (
-        <EventProvider>
-            <BrowserRouter>
-                <AppShell>
-                    <Suspense fallback={loadingFallback}>
-                        <Routes>
-                            <Route path="/" element={<Navigate to="/calendar" replace />} />
-                            <Route path="/calendar" element={<CalendarView />} />
-                            <Route path="/organize" element={<OrganizeView />} />
-                            <Route path="/connections" element={<ConnectionsView />} />
-                            <Route path="/now" element={<NowView />} />
-                            <Route path="/assistant" element={<AssistantView />} />
-                            <Route path="/summary" element={<DailySummaryView />} />
-                            <Route path="/settings" element={<div className="p-8 text-center text-stone-400">Settings Placeholder</div>} />
-                        </Routes>
-                    </Suspense>
-                </AppShell>
-                <GlobalEventPanel />
-            </BrowserRouter>
-        </EventProvider>
-    );
+        <div className="min-h-screen bg-gradient-to-br from-cream via-white to-slate-50 px-4 py-8 lg:px-10">
+            <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 lg:flex-row">
+        <aside className="flex w-full flex-col gap-8 lg:w-1/3">
+            <OnboardingPanel />
+            <StoryPanel />
+        </aside>
+        <main className="flex w-full flex-col gap-8 lg:w-2/3">
+            <NowPreview />
+            <WeekPreview />
+            <section className="grid gap-6 lg:grid-cols-2">
+                <MonthPreview />
+                <OrganizerPreview />
+            </section>
+            <ConnectionsPreview />
+            <section className="grid gap-6 lg:grid-cols-2">
+                <PersonalizationControls />
+                <EventList />
+            </section>
+        </main>
+    </div>
+</div>
+);
 }
-
-export default App;

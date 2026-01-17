@@ -1,0 +1,3 @@
+# Prompting Rules
+
+Contexto > creatividad.

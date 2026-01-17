@@ -1,0 +1,3 @@
+# Reglas UI
+
+Consistencia visual.
