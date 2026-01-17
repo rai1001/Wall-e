@@ -25,3 +25,6 @@
 ## Próximos pasos
 1. Registrar QA/QA release/CI logs en las checklist y preparar la entrada del sprint para `docs_full/07_QA_Y_SEGURIDAD/04_checklist_fin_sprint.md`.
 2. Alinear la UI con la historia final y preparar la demo del asistente IA para el sprint review.
+3. Prioridad alta: fijar tests de middleware/autenticación que invoquen los middlewares (vitest/Playwright) validando tokens con y sin `organization_id`, documentar el flujo y resultados en `docs_full/07_QA_Y_SEGURIDAD/01_checklist_seguridad.md`.
+4. Documentar que `PLAYWRIGHT_SUPABASE_KEY` se obtiene de `PLAYWRIGHT_SUPABASE_KEY` (obligatoria) y que el entorno lanza un error si no está disponible antes de ejecutar los escenarios de QA.
+5. Ir cerrando Sprint 4 (RPCs + cola) y Sprint 5 (toggles/personalización) con evidencias en `docs_full/07_QA_Y_SEGURIDAD/02_checklist_datos.md` y `docs_full/07_QA_Y_SEGURIDAD/04_checklist_fin_sprint.md`.

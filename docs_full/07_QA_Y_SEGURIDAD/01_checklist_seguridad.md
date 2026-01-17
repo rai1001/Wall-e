@@ -4,3 +4,7 @@
 - Las funciones del asistente (`assistant_suggest`, `assistant_confirm`) y `plan_assistant_suggestions` solo pueden ser ejecutadas por miembros autenticados de la organización.
 - Los Edge functions usan service role cuando escriben en la base; el frontend solo utiliza anon key + RLS (sin lógica crítica).
 - Toda auditoría se documenta en `docs_full/04_SPRINTS/SPRINT_3_IA/storyteller.md` y se valida con `npm run test` antes de cerrar el sprint.
+- Validar con tests automáticos (vitest/Playwright) que los middlewares de autenticación sólo admiten requests con `organization_id` y que los JWT sin la claim se rechazan antes de tocar la base.
+- `playwright.config.ts` y cualquier script de QA deben exigir `process.env.PLAYWRIGHT_SUPABASE_KEY`; si la variable falta, arrojar un error claro para evitar usar secretos hardcodeados.
+- Los headers de seguridad (`Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`) se aplican desde Vite/Edge y se comprueban en pruebas de integración (supertest/Playwright) para las rutas expuestas.
+- Las RPCs nuevas (`calendar.toggle_calendar_enabled`) y el worker (`provider-sync`) refuerzan RLS y solo aceptan la organización del claim; el worker exige `x-organization-id` y no expone jobs de otras orgs.
