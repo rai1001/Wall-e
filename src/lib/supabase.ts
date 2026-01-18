@@ -1,19 +1,12 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabaseClient as supabase } from './supabaseClient';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Missing Supabase environment variables');
-}
-
-export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '');
+export { supabase };
 
 export const signInWithGoogle = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            scopes: 'https://www.googleapis.com/auth/calendar.readonly', // Read-only for now for safety
+            scopes: 'https://www.googleapis.com/auth/calendar.readonly',
             queryParams: {
                 access_type: 'offline',
                 prompt: 'consent',

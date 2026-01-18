@@ -77,9 +77,13 @@ function coerceStep(ai: StepPrediction, taskTitle: string): StepResult {
 }
 
 async function callAntigravity(payload: AntigravityPayload): Promise<StepPrediction> {
-    const apiKey = Deno.env.get("ANTIGRAVITY_API_KEY")!;
+    const apiKey = Deno.env.get("ANTIGRAVITY_API_KEY");
     const model = Deno.env.get("ANTIGRAVITY_MODEL") || "default";
     const system = Deno.env.get("ANTIGRAVITY_SYSTEM_PROMPT") || "";
+
+    if (!apiKey) {
+        throw new Error("ANTIGRAVITY_API_KEY_missing");
+    }
 
     // Adaptar a tu proveedor si difiere
     const r = await fetch("https://api.antigravity.ai/chat", {
@@ -148,9 +152,13 @@ export default async function handler(req: Request) {
     if (req.method === "OPTIONS") return json({}, 200);
 
     try {
-        const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-        const serviceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+        const supabaseUrl = Deno.env.get("SUPABASE_URL");
+        const serviceRole = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
         const authHeader = req.headers.get("Authorization") || "";
+
+        if (!supabaseUrl || !serviceRole) {
+            return json({ error: "server_config_missing" }, 500);
+        }
 
         const admin = createClient(supabaseUrl, serviceRole, {
             global: { headers: { Authorization: authHeader } },

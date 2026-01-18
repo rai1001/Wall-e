@@ -8,3 +8,4 @@
 - `playwright.config.ts` y cualquier script de QA deben exigir `process.env.PLAYWRIGHT_SUPABASE_KEY`; si la variable falta, arrojar un error claro para evitar usar secretos hardcodeados.
 - Los headers de seguridad (`Content-Security-Policy`, `X-Frame-Options`, `X-Content-Type-Options`) se aplican desde Vite/Edge y se comprueban en pruebas de integración (supertest/Playwright) para las rutas expuestas.
 - Las RPCs nuevas (`calendar.toggle_calendar_enabled`) y el worker (`provider-sync`) refuerzan RLS y solo aceptan la organización del claim; el worker exige `x-organization-id` y no expone jobs de otras orgs.
+- Assistant/Edge usan `Authorization: Bearer <token>` y cabeceras de org; registrar las rutas verificadas (assistant_suggest/confirm, provider-sync) y los resultados.

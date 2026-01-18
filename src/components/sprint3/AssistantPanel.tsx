@@ -1,8 +1,12 @@
 import { useState } from 'react';
-import { confirmSuggestion, requestSuggestion } from '../../lib/assistantActions';
+import {
+  confirmSuggestion,
+  requestSuggestion,
+  type SuggestionResponse,
+} from '../../lib/assistantActions';
 
 export default function AssistantPanel() {
-  const [suggestion, setSuggestion] = useState(null);
+  const [suggestion, setSuggestion] = useState<SuggestionResponse | null>(null);
   const [status, setStatus] = useState<'idle' | 'loading' | 'confirming'>('idle');
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -19,7 +23,10 @@ export default function AssistantPanel() {
       setSuggestion(result);
       setStatus('idle');
     } catch (err) {
-      setError((err as Error).message);
+      const msg =
+        err instanceof Error ? err.message : 'Error desconocido al contactar con el asistente';
+      console.error('Assistant request failed', err);
+      setError(msg);
       setStatus('idle');
     }
   };
@@ -37,7 +44,10 @@ export default function AssistantPanel() {
       setStatus('idle');
       setSuggestion(result);
     } catch (err) {
-      setError((err as Error).message);
+      const msg =
+        err instanceof Error ? err.message : 'Error desconocido al confirmar la sugerencia';
+      console.error('Assistant confirm failed', err);
+      setError(msg);
       setStatus('idle');
     }
   };

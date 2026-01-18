@@ -6,3 +6,4 @@
 - Release documentada en `docs_full/04_SPRINTS/SPRINT_5_EXTENSIONS/RELEASE.md` y enlazada desde este checklist.
 - Validar que los tests de middleware/autenticación (vitest/Playwright) corrieron con `PLAYWRIGHT_SUPABASE_KEY` desde variables de entorno y que la suite falla si la clave falta.
 - Confirmar que las respuestas E2E incluyen los headers de seguridad (CSP, X-Frame-Options, X-Content-Type-Options) para las rutas probadas y registrar la lista de rutas verificadas.
+- Sprint 6: registrar cobertura alcanzada (>70% objetivo) y evidencias de tests de integración (assistant/cola/toggles) con headers y claims correctos.

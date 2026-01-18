@@ -1,7 +1,23 @@
 import { useEffect, useState } from 'react';
 import { supabaseClient } from '../lib/supabaseClient';
 
-const fallbackWeek = [
+interface PreviewWeek {
+  day: string;
+  focus: string;
+  events: string[];
+}
+
+interface PreviewConnection {
+  provider: string;
+  status: string;
+}
+
+interface PreviewOrganizer {
+  title: string;
+  owner: string;
+}
+
+const fallbackWeek: PreviewWeek[] = [
   { day: 'LUN', focus: 'Work', events: ['Plan sprint', 'Sync ops'] },
   { day: 'MAR', focus: 'Work', events: ['Review builds', 'Edge tests'] },
   { day: 'MIÉ', focus: 'Home', events: ['Family dinner'] },
@@ -18,22 +34,22 @@ const fallbackMonth = [
   { label: 'Semana 4', detail: 'IA assistant' },
 ];
 
-const fallbackConnections = [
+const fallbackConnections: PreviewConnection[] = [
   { provider: 'Google', status: 'synced' },
   { provider: 'Microsoft', status: 'pending' },
   { provider: 'Supabase mirror', status: 'active' },
 ];
 
-const fallbackOrganizer = [
+const fallbackOrganizer: PreviewOrganizer[] = [
   { title: 'Revisar RLS', owner: 'DB Lead' },
   { title: 'Configurar tenant claims', owner: 'Security' },
 ];
 
 export function useCalendarPreview() {
-  const [week, setWeek] = useState(fallbackWeek);
+  const [week, setWeek] = useState<PreviewWeek[]>(fallbackWeek);
   const [month] = useState(fallbackMonth);
-  const [connections, setConnections] = useState(fallbackConnections);
-  const [organizer, setOrganizer] = useState(fallbackOrganizer);
+  const [connections, setConnections] = useState<PreviewConnection[]>(fallbackConnections);
+  const [organizer, setOrganizer] = useState<PreviewOrganizer[]>(fallbackOrganizer);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -31,3 +31,4 @@
   ```
   y su equivalente para la org actual, y adjuntar en el release/QA los resultados que muestran la política `organization_id`.
 - Documentar qué pruebas de integración (Playwright/Supertest) cubren `provider-sync` y la RPC `calendar.toggle_calendar_enabled`, incluyendo los headers `x-organization-id` y la confirmación de que el worker no procesa jobs de otras organizaciones.
+- Registrar en Sprint 6 la cobertura de tests (objetivo >70%) y las suites añadidas (hooks, servicios, componentes) con sus resultados.
